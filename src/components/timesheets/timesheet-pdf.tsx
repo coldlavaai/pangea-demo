@@ -173,7 +173,7 @@ export function TimesheetPDF({ ts, entries }: Props) {
         <View style={styles.header}>
           <View>
             <Text style={styles.brandName}>Rex</Text>
-            <Text style={styles.brandSub}>AZTEC LABOUR FORCE</Text>
+            <Text style={styles.brandSub}>PANGAEA WORKFORCE</Text>
           </View>
           <View>
             <Text style={styles.docTitle}>TIMESHEET</Text>

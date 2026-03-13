@@ -43,7 +43,7 @@ export default async function InductionPage({
             <span className="text-[#D4AF37] font-bold text-base">A</span>
           </div>
           <div>
-            <p className="font-bold text-foreground tracking-wide text-sm">AZTEC LANDSCAPES</p>
+            <p className="font-bold text-foreground tracking-wide text-sm">PANGAEA</p>
             <p className="text-xs text-muted-foreground">Company Induction</p>
           </div>
         </div>

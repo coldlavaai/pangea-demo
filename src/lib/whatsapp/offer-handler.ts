@@ -60,7 +60,7 @@ export async function handleOfferReply({
   const trade = (allocation.labour_request as unknown as { trade_category: { name: string } | null } | null)
     ?.trade_category?.name ?? 'the role'
   const dateStr = format(new Date(allocation.start_date), 'd MMM yyyy')
-  const liamNumber = process.env.LIAM_WHATSAPP_NUMBER! // 'whatsapp:+447742201349'
+  const staffNumber = process.env.STAFF_WHATSAPP_NUMBER!
 
   if (intent === 'yes') {
     // Confirm the allocation
@@ -79,14 +79,14 @@ export async function handleOfferReply({
       return "Sorry, something went wrong confirming your booking. Please call us directly."
     }
 
-    // Notify Liam
+    // Notify staff
     try {
       await sendWhatsApp(
-        liamNumber,
+        staffNumber,
         `✅ *${operativeName}* has ACCEPTED the offer for *${siteName}* (${trade}) on ${dateStr}. Allocation confirmed.`
       )
     } catch (e) {
-      console.error('[offer-handler] liam notify error', e)
+      console.error('[offer-handler] staff notify error', e)
     }
 
     // BOS notification
@@ -119,14 +119,14 @@ export async function handleOfferReply({
       console.error('[offer-handler] decline error', error)
     }
 
-    // Notify Liam
+    // Notify staff
     try {
       await sendWhatsApp(
-        liamNumber,
+        staffNumber,
         `❌ *${operativeName}* has DECLINED the offer for *${siteName}* (${trade}) on ${dateStr}.`
       )
     } catch (e) {
-      console.error('[offer-handler] liam notify error', e)
+      console.error('[offer-handler] staff notify error', e)
     }
 
     // BOS notification

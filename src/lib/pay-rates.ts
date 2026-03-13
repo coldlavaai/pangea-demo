@@ -7,13 +7,13 @@
  * Rates are HOURLY. Day rate = hourly × 8.
  * Grade is inferred from CSCS colour on intake.
  * Quartile is inferred from experience years.
- * Liam confirms/adjusts after meeting the operative.
+ * Staff confirms/adjusts after meeting the operative.
  */
 
 // Pangaea's hourly pay rates by grade and quartile
 // Each quartile has [min, max] in £/hr
 // Source: Company-worker-database-New.xlsm "Grades Margin By Quartile" sheet
-const AZTEC_RATES: Record<string, { q1: [number, number]; q2: [number, number]; q3: [number, number]; q4: [number, number] }> = {
+const PANGAEA_RATES: Record<string, { q1: [number, number]; q2: [number, number]; q3: [number, number]; q4: [number, number] }> = {
   skilled:           { q1: [14.00, 14.75], q2: [14.76, 15.50], q3: [15.51, 16.25], q4: [16.26, 17.00] },
   highly_skilled:    { q1: [17.01, 18.01], q2: [18.02, 19.01], q3: [19.02, 20.00], q4: [20.01, 21.00] },
   exceptional_skill: { q1: [21.01, 22.01], q2: [22.02, 23.01], q3: [23.02, 24.00], q4: [24.01, 25.00] },
@@ -68,7 +68,7 @@ export interface EstimatedRate {
   dayRate: number      // hourlyRate × 8, rounded to nearest £2
   grade: string        // operative_grade enum value
   quartile: Quartile   // q1–q4
-  rationale: string    // human-readable explanation for Liam
+  rationale: string    // human-readable explanation for staff
 }
 
 /**
@@ -90,7 +90,7 @@ export function estimateDayRate(
   const quartile = experienceToQuartile(experienceYears)
 
   // 3. Look up rate
-  const gradeRates = AZTEC_RATES[grade] ?? AZTEC_RATES.skilled
+  const gradeRates = PANGAEA_RATES[grade] ?? PANGAEA_RATES.skilled
   const [min, max] = gradeRates[quartile]
 
   // Use midpoint of the quartile range
@@ -105,7 +105,7 @@ export function estimateDayRate(
     `Quartile: ${quartileLabel} (${experienceYears} yrs experience)`,
     `Hourly: £${hourlyRate.toFixed(2)}/hr (midpoint of £${min.toFixed(2)}–£${max.toFixed(2)})`,
     `Day rate: £${dayRate}/day (×8 hrs)`,
-    `⚠️ Estimated — confirm with Liam`,
+    `⚠️ Estimated — confirm with staff`,
   ].join(' · ')
 
   return { hourlyRate, dayRate, grade, quartile, rationale }
@@ -115,7 +115,7 @@ export function estimateDayRate(
  * Get the full rate range for a grade (for display in the UI).
  */
 export function getGradeRateRange(grade: string): { minHourly: number; maxHourly: number; minDay: number; maxDay: number } | null {
-  const rates = AZTEC_RATES[grade]
+  const rates = PANGAEA_RATES[grade]
   if (!rates) return null
   return {
     minHourly: rates.q1[0],
@@ -129,7 +129,7 @@ export function getGradeRateRange(grade: string): { minHourly: number; maxHourly
  * Get the midpoint day rate for a specific grade + quartile (for the Adjust Rate modal).
  */
 export function getMidpointDayRate(grade: string, quartile: string): number | null {
-  const rates = AZTEC_RATES[grade]
+  const rates = PANGAEA_RATES[grade]
   if (!rates || !['q1', 'q2', 'q3', 'q4'].includes(quartile)) return null
   const [min, max] = rates[quartile as Quartile]
   const hourlyRate = Math.round(((min + max) / 2) * 100) / 100

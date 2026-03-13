@@ -66,11 +66,11 @@ export async function GET(request: NextRequest) {
         continue
       }
 
-      // WhatsApp alert to Liam
-      if (process.env.LIAM_WHATSAPP_NUMBER && process.env.AZTEC_STAFF_ALERT_SID) {
+      // WhatsApp alert to staff
+      if (process.env.STAFF_WHATSAPP_NUMBER && process.env.PANGAEA_STAFF_ALERT_SID) {
         await sendWhatsAppTemplate(
-          process.env.LIAM_WHATSAPP_NUMBER,
-          process.env.AZTEC_STAFF_ALERT_SID,
+          process.env.STAFF_WHATSAPP_NUMBER,
+          process.env.PANGAEA_STAFF_ALERT_SID,
           { '1': `Labour request at ${siteName} ends on ${req.end_date}. Review allocations and plan handover.` }
         ).catch((e) => result.errors.push(`Finish reminder WA failed: ${e.message}`))
       }
@@ -160,11 +160,11 @@ export async function GET(request: NextRequest) {
             result.errors.push(`Timesheet notif failed for ${opName}: ${e.message}`)
           } else {
             severity === 'critical' ? result.timesheet_criticals++ : result.timesheet_warnings++
-            // WhatsApp Liam on Friday critical only
-            if (severity === 'critical' && process.env.LIAM_WHATSAPP_NUMBER && process.env.AZTEC_STAFF_ALERT_SID) {
+            // WhatsApp staff on Friday critical only
+            if (severity === 'critical' && process.env.STAFF_WHATSAPP_NUMBER && process.env.PANGAEA_STAFF_ALERT_SID) {
               await sendWhatsAppTemplate(
-                process.env.LIAM_WHATSAPP_NUMBER,
-                process.env.AZTEC_STAFF_ALERT_SID,
+                process.env.STAFF_WHATSAPP_NUMBER,
+                process.env.PANGAEA_STAFF_ALERT_SID,
                 { '1': `Missing timesheet: ${opName} has not submitted for w/c ${weekStartStr}. Please investigate.` }
               ).catch((e2) => result.errors.push(`Timesheet WA failed for ${opName}: ${e2.message}`))
             }
@@ -179,11 +179,11 @@ export async function GET(request: NextRequest) {
             result.errors.push(`Escalate notif failed for ${opName}: ${e.message}`)
           } else {
             result.timesheet_criticals++
-            // WhatsApp Liam on escalation to critical
-            if (process.env.LIAM_WHATSAPP_NUMBER && process.env.AZTEC_STAFF_ALERT_SID) {
+            // WhatsApp staff on escalation to critical
+            if (process.env.STAFF_WHATSAPP_NUMBER && process.env.PANGAEA_STAFF_ALERT_SID) {
               await sendWhatsAppTemplate(
-                process.env.LIAM_WHATSAPP_NUMBER,
-                process.env.AZTEC_STAFF_ALERT_SID,
+                process.env.STAFF_WHATSAPP_NUMBER,
+                process.env.PANGAEA_STAFF_ALERT_SID,
                 { '1': `Still missing timesheet: ${opName} — w/c ${weekStartStr}. Now critical.` }
               ).catch((e2) => result.errors.push(`Escalate WA failed for ${opName}: ${e2.message}`))
             }
@@ -262,7 +262,7 @@ export async function GET(request: NextRequest) {
       }
 
       if (op.phone) {
-        await sendWhatsAppTemplate(op.phone, process.env.AZTEC_DOC_EXPIRING_SID!, {
+        await sendWhatsAppTemplate(op.phone, process.env.PANGAEA_DOC_EXPIRING_SID!, {
           '1': op.first_name,
           '2': docLabel,
           '3': soonestExpiry.expiry_date!,

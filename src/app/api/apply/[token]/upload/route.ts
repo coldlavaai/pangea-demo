@@ -468,15 +468,15 @@ export async function POST(
       }
     }
 
-    const liamNumber = process.env.LIAM_WHATSAPP_NUMBER
-    if (liamNumber) {
+    const staffNumber = process.env.STAFF_WHATSAPP_NUMBER
+    if (staffNumber) {
       try {
         await sendWhatsApp(
-          liamNumber,
+          staffNumber,
           `📋 *Documents received — ${fullName}*\n\n*Phone:* ${operative.phone ?? 'unknown'}\n*Docs:* ${docsUploaded}${flagSummary}\n\n👉 Review & verify:\nhttps://pangaea-demo.vercel.app/operatives/${operativeId}?tab=documents`
         )
       } catch (e) {
-        console.error('[upload] liam notify error', e)
+        console.error('[upload] staff notify error', e)
       }
     }
   }

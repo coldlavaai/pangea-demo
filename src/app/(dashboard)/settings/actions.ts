@@ -217,7 +217,7 @@ export async function inviteUser(data: {
   }).catch((e) => console.error('[inviteUser] email send failed:', e))
 
   // Send WhatsApp if phone provided and template configured
-  const inviteSid = process.env.AZTEC_USER_INVITE_SID
+  const inviteSid = process.env.PANGAEA_USER_INVITE_SID
   if (data.phone_number && inviteSid) {
     const { sendWhatsAppTemplate } = await import('@/lib/whatsapp/send')
     await sendWhatsAppTemplate(data.phone_number, inviteSid, {

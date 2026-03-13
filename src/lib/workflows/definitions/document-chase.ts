@@ -204,11 +204,11 @@ export const documentChaseWorkflow: WorkflowDefinition = {
       )
     }
 
-    const liamNumber = process.env.LIAM_WHATSAPP_NUMBER
-    if (liamNumber) {
+    const staffNumber = process.env.STAFF_WHATSAPP_NUMBER
+    if (staffNumber) {
       const appUrl = (process.env.NEXT_PUBLIC_APP_URL ?? 'https://pangaea-demo.vercel.app').trim()
       await sendWhatsApp(
-        liamNumber,
+        staffNumber,
         `⚠️ *Document Chase — No Response*\n\n${fullName} hasn't uploaded their ${docLabel} after ${target.messages_sent} reminders.\n\n${appUrl}/operatives/${target.operative_id}`
       )
     }

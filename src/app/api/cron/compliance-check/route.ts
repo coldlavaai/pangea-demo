@@ -145,11 +145,11 @@ export async function GET(request: NextRequest) {
         operative_id: op.id,
       })
 
-      // WhatsApp alert to Liam
-      if (process.env.LIAM_WHATSAPP_NUMBER && process.env.AZTEC_STAFF_ALERT_SID) {
+      // WhatsApp alert to staff
+      if (process.env.STAFF_WHATSAPP_NUMBER && process.env.PANGAEA_STAFF_ALERT_SID) {
         await sendWhatsAppTemplate(
-          process.env.LIAM_WHATSAPP_NUMBER,
-          process.env.AZTEC_STAFF_ALERT_SID,
+          process.env.STAFF_WHATSAPP_NUMBER,
+          process.env.PANGAEA_STAFF_ALERT_SID,
           { '1': `${op.first_name} ${op.last_name} has been auto-blocked. ${blockedReason}. Future allocations terminated.` }
         ).catch((e) => result.errors.push(`Block WA failed for ${op.first_name}: ${e.message}`))
       }
@@ -217,7 +217,7 @@ export async function GET(request: NextRequest) {
           result.tier_notifications++
 
           if ((tier.type === 'doc_expiring_30' || tier.type === 'doc_expiring_60') && op.phone) {
-            await sendWhatsAppTemplate(op.phone, process.env.AZTEC_DOC_EXPIRING_SID!, {
+            await sendWhatsAppTemplate(op.phone, process.env.PANGAEA_DOC_EXPIRING_SID!, {
               '1': op.first_name,
               '2': docLabel,
               '3': mediumTermDoc.expiry_date!,

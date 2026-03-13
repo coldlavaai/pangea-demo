@@ -30,7 +30,7 @@ interface TradeCategoriesPanelProps {
   categories: TradeCategory[]
 }
 
-const AZTEC_TRADES = [
+const DEFAULT_TRADES = [
   { name: 'General Operative', labour_type: 'blue_collar' },
   { name: 'CPCS Plant Operator', labour_type: 'blue_collar' },
   { name: 'Groundworker', labour_type: 'blue_collar' },
@@ -208,7 +208,7 @@ export function TradeCategoriesPanel({ orgId, categories: initialCategories }: T
   const seedDefaultTrades = async () => {
     setSeeding(true)
     const existingNames = new Set(categories.map((c) => c.name.toLowerCase()))
-    const toInsert = AZTEC_TRADES.filter((t) => !existingNames.has(t.name.toLowerCase())).map(
+    const toInsert = DEFAULT_TRADES.filter((t) => !existingNames.has(t.name.toLowerCase())).map(
       (t, i) => ({
         organization_id: orgId,
         name: t.name,
@@ -240,7 +240,7 @@ export function TradeCategoriesPanel({ orgId, categories: initialCategories }: T
     toast.success(`${toInsert.length} trade${toInsert.length !== 1 ? 's' : ''} added`)
   }
 
-  const hasMissingTrades = AZTEC_TRADES.some(
+  const hasMissingTrades = DEFAULT_TRADES.some(
     (t) => !categories.map((c) => c.name.toLowerCase()).includes(t.name.toLowerCase())
   )
 
