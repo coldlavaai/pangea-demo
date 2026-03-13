@@ -34,6 +34,7 @@ export async function initiateEngagement(
   phone: string,
   firstName: string,
   language?: string | null,
+  orgName?: string,
 ): Promise<'engaged' | 're_engaged'> {
   const withinSession = await isWithinSessionWindow(db, phone)
 
@@ -49,6 +50,7 @@ export async function initiateEngagement(
 
   await sendWhatsAppTemplate(phone, reEngageSid, {
     '1': firstName ?? 'there',
+    '2': orgName ?? 'Pangaea',
   })
 
   console.log('[workflow-engine] RE_ENGAGE sent to', phone)

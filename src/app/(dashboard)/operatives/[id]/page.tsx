@@ -23,6 +23,7 @@ import type { OperativeCard } from '@/components/operatives/operative-cards-sect
 import { OperativeInfoCards } from '@/components/operatives/operative-info-cards'
 import { getUserRole } from '@/lib/auth/get-user-role'
 import { DeleteOperativeButton } from '@/components/operatives/delete-operative-button'
+import { StartOnboardingButton } from '@/components/operatives/start-onboarding-button'
 import { RateActions } from '@/components/operatives/rate-actions'
 import { CSCS_DOT_CLASS, CSCS_COLOUR_LABEL } from '@/lib/cscs-colours'
 import { WorkHistorySection } from '@/components/operatives/work-history-section'
@@ -331,6 +332,12 @@ export default async function OperativeProfilePage({
           description={op.reference_number ?? undefined}
         />
         <div className="flex items-center gap-2 shrink-0">
+          <StartOnboardingButton
+            operativeId={id}
+            operativeName={`${op.first_name} ${op.last_name}`}
+            hasPhone={!!op.phone}
+            status={op.status ?? 'prospect'}
+          />
           <DeleteOperativeButton
             operativeId={id}
             operativeName={`${op.first_name} ${op.last_name}`}

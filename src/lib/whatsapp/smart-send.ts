@@ -13,6 +13,8 @@ interface SmartSendParams {
   operativeId?: string
   /** Operative first name — needed for RE_ENGAGE template */
   firstName?: string
+  /** Organisation name — needed for RE_ENGAGE template variable {{2}} */
+  orgName?: string
 }
 
 interface SmartSendResult {

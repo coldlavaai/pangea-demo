@@ -21,7 +21,7 @@ export const WHATSAPP_TEMPLATES = {
   DOC_EXPIRING:         'HXdd0da06258d6aacda535dc002603f94a',
   // Pending WhatsApp business approval (user-initiated approved)
   PROFILE_COMPLETION:   'HX21c57d7160f8b8ab37202934767f3213',
-  RE_ENGAGE:            'HX0f58bfdbc596e7f3fe80307ccf6027e2',
+  RE_ENGAGE:            'HXe2b377f411cb49571f643f607a11da70',
   // Follow-up re-engage — casual tone for chasing non-responders
   RE_ENGAGE_FOLLOW_UP:  'HX5eb9b5022db0b60b46d23928cd5b163a',
   JOB_OFFER_REMINDER:   'HX82f56a16cf85fc92acb53c0adfe312b2',
