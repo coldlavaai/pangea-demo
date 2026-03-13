@@ -27,18 +27,18 @@ const PANGAEA_RATES: Record<string, { q1: [number, number]; q2: [number, number]
 
 // Confirmed flat rates for operational grades (not quartile-based)
 // pay = what operative receives, charge = what the company bills the site
-// Source: workers spreadsheet col 8 (charge) + Q1 answers from Liam (2026-03-07)
+// Source: workers spreadsheet col 8 (charge) + Q1 answers from client (2026-03-07)
 // NOTE: pay rates for most operational grades vary per individual — only confirmed flat rates stored here
 export const OPERATIONAL_RATES: Record<string, { charge: number; pay: number | null }> = {
   groundworker:        { charge: 21.95, pay: null  }, // pay varies per individual
   skilled_landscaper:  { charge: 26.59, pay: null  }, // pay varies per individual
-  plant_operator:      { charge: 26.59, pay: null  }, // same charge as skilled landscaper (confirmed Liam)
+  plant_operator:      { charge: 26.59, pay: null  }, // same charge as skilled landscaper (confirmed by client)
   site_supervisor:     { charge: 37.40, pay: null  }, // pay varies per individual
   site_manager:        { charge: 41.52, pay: null  }, // pay varies per individual
   operative:           { charge: 20.00, pay: null  }, // pay varies per individual
   mobile_crew:         { charge: 20.00, pay: null  }, // pay varies per individual
-  agency_labour:       { charge: 31.74, pay: 28.75 }, // confirmed Liam 2026-03-07
-  document_controller: { charge: 21.95, pay: 13.57 }, // confirmed Liam 2026-03-07
+  agency_labour:       { charge: 31.74, pay: 28.75 }, // confirmed by client 2026-03-07
+  document_controller: { charge: 21.95, pay: 13.57 }, // confirmed by client 2026-03-07
   semi_skilled:        { charge: 0,     pay: null  }, // grade confirmed, rates TBC
   manager:             { charge: 41.52, pay: null  }, // historical = site_manager
 }

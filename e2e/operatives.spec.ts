@@ -31,7 +31,7 @@ test.beforeAll(async () => {
       first_name: 'Test',
       last_name: 'Playwright',
       phone: '+447700000001',
-      email: 'playwright@test.aztec',
+      email: 'playwright@test.pangaea',
       status: 'available',
       labour_type: 'blue_collar',
     })
@@ -52,7 +52,7 @@ test.afterAll(async () => {
 
 test('S4 — operatives list page loads', async ({ page }) => {
   await page.goto('/operatives')
-  await expect(page).toHaveTitle(/AZTEC BOS/)
+  await expect(page).toHaveTitle(/Pangaea/)
   await expect(page.getByRole('heading', { name: 'Operatives' })).toBeVisible()
 })
 

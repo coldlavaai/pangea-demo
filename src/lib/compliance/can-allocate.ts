@@ -11,7 +11,7 @@
  *  9. Required certs present and valid (from labour_request.required_certs)
  *
  * NOTE: rtw_share_code is stored but Gov.uk share code verification API is
- * intentionally NOT used — RTW verification is handled manually by Liam.
+ * intentionally NOT used — RTW verification is handled manually by the admin.
  * UK/Ireland passport holders typically have no expiry and no share code.
  */
 

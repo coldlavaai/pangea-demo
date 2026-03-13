@@ -202,7 +202,7 @@ const GRADE_MAP: Record<string, string | null> = {
   'operative': 'operative',
   'site manager': 'site_manager',
   'site_manager': 'site_manager',
-  'manager': 'site_manager',         // historical term (confirmed Liam 2026-03-07)
+  'manager': 'site_manager',         // historical term (confirmed by client 2026-03-07)
   'section manager': 'site_manager',
   'mobile crew': 'mobile_crew',
   'mobile_crew': 'mobile_crew',
@@ -217,7 +217,7 @@ const GRADE_MAP: Record<string, string | null> = {
   'semiskilled': 'semi_skilled',
   'semiskiled': 'semi_skilled',
   'semi skilled work': 'semi_skilled',
-  'static crew': null,               // historical, no longer used (confirmed Liam 2026-03-07)
+  'static crew': null,               // historical, no longer used (confirmed by client 2026-03-07)
 }
 
 // ─── CSCS scheme keywords ─────────────────────────────────────────────────────

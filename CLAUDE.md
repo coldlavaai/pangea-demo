@@ -6,7 +6,7 @@ Oliver Tatler (Cold Lava). Direct comms. Build fast, no waffle.
 
 **Repo:** `pangaea-demo`
 **Live:** https://pangaea-demo.vercel.app
-**Stack:** Next.js 15.5.12 · Supabase (Frankfurt, `ybfhkcvrzbgzrayjskfp`) · Vercel · shadcn/ui · Tailwind
+**Stack:** Next.js 15.5.12 · Supabase (Frankfurt, `xmmigscmuohcjwkmqvwi`) · Vercel · shadcn/ui · Tailwind
 **Org ID:** `00000000-0000-0000-0000-000000000001`
 
 ---

@@ -140,7 +140,7 @@ export async function POST(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await (supabase as any).from('operatives').update({ last_upload_at: new Date().toISOString() }).eq('id', operativeId)
 
-  // 7. Create notification for Liam
+  // 7. Create notification for admin
   const fullName = `${operative.first_name} ${operative.last_name}`.trim()
   const fieldNames = Object.keys(safeFields).join(', ').replace(/_/g, ' ')
   await createNotification(supabase, {

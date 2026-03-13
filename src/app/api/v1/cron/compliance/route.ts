@@ -7,7 +7,7 @@
  *  3. Log result to cron_runs table (UNIQUE on job_type + run_date prevents double-fire)
  *
  * RTW NOTE: Share code / Gov.uk verification API is NOT used.
- * RTW is manually verified by Liam. This job only acts on expiry dates.
+ * RTW is manually verified by the admin. This job only acts on expiry dates.
  *
  * UK/Ireland passport holders typically have no rtw_expiry set — they will not be blocked.
  */

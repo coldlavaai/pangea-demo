@@ -8,7 +8,7 @@ import * as dotenv from 'dotenv'
 
 dotenv.config({ path: path.join(process.cwd(), '.env.local') })
 
-const TEST_EMAIL = 'playwright-test@aztec-bos.internal'
+const TEST_EMAIL = 'playwright-test@pangaea-demo.internal'
 
 export default async function globalTeardown() {
   const admin = createClient(

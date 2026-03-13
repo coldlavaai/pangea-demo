@@ -36,8 +36,8 @@ export async function POST(
     .maybeSingle()
 
   const rationale = dayRateOverride
-    ? `Confirmed by Liam at £${dayRate}/day (adjusted from £${op.day_rate}/day)`
-    : `Confirmed by Liam at £${dayRate}/day`
+    ? `Rate confirmed at £${dayRate}/day (adjusted from £${op.day_rate}/day)`
+    : `Rate confirmed at £${dayRate}/day`
 
   // Insert confirmed rate history row
   const { error: insertErr } = await supabase.from('operative_pay_rates').insert({

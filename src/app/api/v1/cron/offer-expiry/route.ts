@@ -8,7 +8,7 @@
  *
  * NOTE: Full cascade logic (trying next operative in the queue) requires the
  * WhatsApp webhook handler (S21). For now, expired offers are set to 'expired'
- * and Liam is notified via the allocations dashboard.
+ * and the admin is notified via the allocations dashboard.
  */
 
 import { NextRequest, NextResponse } from 'next/server'

@@ -363,7 +363,7 @@ export async function POST(
     if (nationality) operativeUpdates.nationality = nationality
     if (document_number) operativeUpdates.id_document_number = document_number
 
-    // Derive RTW type from nationality + doc type (rtw_verified set later when Liam clicks Verify)
+    // Derive RTW type from nationality + doc type (rtw_verified set later when admin clicks Verify)
     const n = (nationality ?? '').toLowerCase()
     let rtwType: string | null = null
     if (n.includes('british') || n.includes('united kingdom') || n === 'gbr') rtwType = 'british_citizen'
@@ -444,7 +444,7 @@ export async function POST(
 
   // 8. WhatsApp notifications
   // Workflow mode: acknowledge the upload, let them know we'll review it.
-  // Amber intake: send full confirmation to operative + notify Liam.
+  // Amber intake: send full confirmation to operative + notify admin.
   if (workflowMode && operative.phone) {
     try {
       await sendWhatsApp(
@@ -485,7 +485,7 @@ export async function POST(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await (supabase as any).from('operatives').update({ last_upload_at: new Date().toISOString() }).eq('id', operativeId)
 
-  // Notify BOS + Liam via Telegram
+  // Notify BOS + admin via Telegram
   await createNotification(supabase, {
     type: 'document_uploaded',
     title: `Document: ${fullName}`,

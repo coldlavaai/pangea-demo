@@ -384,7 +384,7 @@ export function RapQuickAdd() {
               />
             </div>
 
-            {/* Score preview — matches Liam's spreadsheet format */}
+            {/* Score preview — matches spreadsheet format */}
             {(() => {
               const total = reliability + attitude + performance + safety
               const avg = total / 4

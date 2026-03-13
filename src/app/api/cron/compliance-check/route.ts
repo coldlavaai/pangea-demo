@@ -11,7 +11,7 @@
  *  Tiers 4/5/6 deduplicate via the notifications table (only fire once per tier per operative).
  *
  * WhatsApp for tiers 4/5: requires doc_expiring template SID from Plex (pending S36 Plex actions).
- * STAFF_ALERT_NUMBER env var: Liam's number for critical escalation (pending S36 Plex actions).
+ * STAFF_ALERT_NUMBER env var: Staff number for critical escalation (pending S36 Plex actions).
  */
 
 import { NextRequest, NextResponse } from 'next/server'

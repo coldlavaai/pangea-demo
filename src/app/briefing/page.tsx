@@ -69,7 +69,7 @@ export default function BriefingPage() {
             ['Finish operative', 'Mark end of allocation from site'],
           ]} />
 
-          <SubTitle>@RexNotifyBot — for Admins (Liam, Donna)</SubTitle>
+          <SubTitle>@RexNotifyBot — for Admins</SubTitle>
           <p className="text-sm text-muted-foreground mb-3">Real-time push notifications and on-demand queries.</p>
           <Table rows={[
             ['Unread', 'All unread notifications'],
@@ -104,7 +104,7 @@ export default function BriefingPage() {
           <Table rows={[
             ['@RexNotifyBot', 'Admins get push notifications to their phone the moment something happens — no need to be logged in'],
             ['Activity feed (17 event types)', 'Helicopter view of everything in one timeline — WhatsApp, docs, offers, compliance, emails'],
-            ['WYSIWYG email template editor', 'Liam and Donna can edit invite email copy directly with live preview. No developer needed'],
+            ['WYSIWYG email template editor', 'Admins can edit invite email copy directly with live preview. No developer needed'],
             ['Microsoft Outlook integration', 'Invite emails come from a real company address — better deliverability, professional appearance'],
             ['CV upload + AI parsing', 'Upload a CV → Claude AI extracts work history, trade, experience, and estimated day rate'],
             ['Short URL system', 'Upload links use your own domain, not TinyURL — looks professional, no third-party dependency'],
@@ -162,8 +162,8 @@ export default function BriefingPage() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <Li>If we&apos;d used WhatsApp for internal comms, every notification type (arrival, NCR, offer accepted, doc uploaded) would require a separate Meta template approval. That&apos;s months of friction and ongoing restrictions on what we can send.</Li>
               <Li>A site manager opening @PangaeaSiteBot gets a <strong className="text-white">menu of buttons</strong> — Log Arrival, Log NCR, RAP Report. They tap, they don&apos;t type. WhatsApp cannot do this.</Li>
-              <Li>Liam gets a <strong className="text-white">real-time push DM</strong> the moment an operative arrives or an NCR is logged. No templates, no approval, no delay.</Li>
-              <Li>The two channels work together: site manager logs arrival on Telegram → Liam gets push notification on Telegram → operative&apos;s WhatsApp gets update if needed.</Li>
+              <Li>The admin gets a <strong className="text-white">real-time push DM</strong> the moment an operative arrives or an NCR is logged. No templates, no approval, no delay.</Li>
+              <Li>The two channels work together: site manager logs arrival on Telegram → admin gets push notification on Telegram → operative&apos;s WhatsApp gets update if needed.</Li>
             </ul>
           </div>
         </section>

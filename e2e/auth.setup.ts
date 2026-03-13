@@ -15,7 +15,7 @@ import * as dotenv from 'dotenv'
 dotenv.config({ path: path.join(process.cwd(), '.env.local') })
 
 const SESSION_FILE = path.join(process.cwd(), 'e2e/.auth/session.json')
-const TEST_EMAIL = 'playwright-test@aztec-bos.internal'
+const TEST_EMAIL = 'playwright-test@pangaea-demo.internal'
 const TEST_PASSWORD = 'Playwright-Test-2026!'
 
 export default async function globalSetup() {

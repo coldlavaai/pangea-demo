@@ -149,7 +149,7 @@ export async function POST(
   }
 
   const cscsNotes = [
-    'AI-verified via upload form (Amber intake). Awaiting Liam review.',
+    'AI-verified via upload form (Amber intake). Awaiting admin review.',
     ...(flags.length > 0 ? [`⚠️ ${flags.join(' | ')}`] : []),
   ].join(' ')
 

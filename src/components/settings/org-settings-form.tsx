@@ -19,7 +19,7 @@ export function OrgSettingsForm({ orgId, name: initName, slug: initSlug, setting
   const supabase = createClient()
 
   const [orgName, setOrgName] = useState(initName)
-  const [liamWhatsapp, setLiamWhatsapp] = useState((settings.liam_whatsapp as string) ?? '')
+  const [managerWhatsapp, setManagerWhatsapp] = useState((settings.manager_whatsapp as string) ?? '')
   const [offerWindow, setOfferWindow] = useState(String(settings.offer_window_minutes ?? 30))
   const [broadcastCount, setBroadcastCount] = useState(String(settings.offer_broadcast_count ?? 3))
   const [reallocRadius, setReallocRadius] = useState(String(settings.reallocation_radius_miles ?? 25))
@@ -31,7 +31,7 @@ export function OrgSettingsForm({ orgId, name: initName, slug: initSlug, setting
 
     const newSettings = {
       ...settings,
-      liam_whatsapp: liamWhatsapp || null,
+      manager_whatsapp: managerWhatsapp || null,
       offer_window_minutes: parseInt(offerWindow, 10) || 30,
       offer_broadcast_count: parseInt(broadcastCount, 10) || 3,
       reallocation_radius_miles: parseInt(reallocRadius, 10) || 25,
@@ -73,8 +73,8 @@ export function OrgSettingsForm({ orgId, name: initName, slug: initSlug, setting
         <div className="space-y-1.5">
           <Label className={labelClass}>Labour Manager WhatsApp</Label>
           <Input
-            value={liamWhatsapp}
-            onChange={(e) => setLiamWhatsapp(e.target.value)}
+            value={managerWhatsapp}
+            onChange={(e) => setManagerWhatsapp(e.target.value)}
             placeholder="+447742201349"
             className={`${fieldClass} font-mono`}
           />
