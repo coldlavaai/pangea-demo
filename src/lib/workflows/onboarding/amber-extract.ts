@@ -90,7 +90,7 @@ OPERATIVE'S MESSAGE:
 
     const response = await Promise.race([
       client.messages.create({
-        model: 'claude-sonnet-4-6-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 512,
         system: prompt,
         messages: [{ role: 'user', content: userMessage }],
@@ -115,10 +115,12 @@ OPERATIVE'S MESSAGE:
       reply: parsed.reply ?? "Thanks! Let me note that down.",
       rtwRejected: parsed.rtwRejected ?? parsed.extracted?.rtw_rejected === true,
     }
-  } catch (err) {
+  } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
     circuitFailures++
     circuitOpenUntil = Date.now() + COOLDOWN_MS
-    console.error('[smart-onboarding] Claude extraction failed:', err)
+    const errMsg = err?.message ?? err?.error?.message ?? String(err)
+    console.error('[smart-onboarding] Claude extraction failed:', errMsg)
+    console.error('[smart-onboarding] Full error:', JSON.stringify(err, null, 2)?.slice(0, 500))
 
     return {
       extracted: {},
