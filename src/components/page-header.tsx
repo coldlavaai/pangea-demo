@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { AlertsBell } from '@/components/alerts-bell'
 
 interface PageHeaderProps {
   title: string
@@ -16,7 +17,10 @@ export function PageHeader({ title, description, action, className }: PageHeader
           <span className="font-mono text-[11px] text-copper-500 uppercase tracking-[0.08em] truncate">{description}</span>
         )}
       </div>
-      {action && <div className="ml-4 shrink-0">{action}</div>}
+      <div className="ml-4 shrink-0 flex items-center gap-3">
+        {action}
+        <AlertsBell />
+      </div>
     </div>
   )
 }

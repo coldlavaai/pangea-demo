@@ -24,7 +24,6 @@ import {
   Activity,
   Sparkles,
 } from 'lucide-react'
-import { AlertsBell } from '@/components/alerts-bell'
 
 const navGroups = [
   {
@@ -111,10 +110,8 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
   return (
     <aside className="flex flex-col w-40 shrink-0 h-screen bg-forest-800 border-r border-forest-700/30 overflow-y-auto">
       {/* Logo */}
-      <div className="flex items-center gap-2 px-3 py-2.5 border-b border-forest-700/30">
-        <img src="/pangaea-logo.png" className="h-6 object-contain shrink-0" alt="Pangea" />
-        <div className="flex-1" />
-        <AlertsBell />
+      <div className="flex items-center justify-center px-3 py-4 border-b border-forest-700/30">
+        <img src="/pangaea-logo.png" className="h-8 object-contain" alt="Pangea" />
       </div>
 
       {/* Nav */}
