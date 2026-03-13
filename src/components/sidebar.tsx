@@ -23,6 +23,7 @@ import {
   Send,
   Activity,
   Sparkles,
+  MessageSquare,
 } from 'lucide-react'
 
 const navGroups = [
@@ -114,8 +115,19 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
         <img src="/pangaea-logo.png" className="h-8 object-contain" alt="Pangea" />
       </div>
 
+      {/* Quick Rex — copper accent, top of nav */}
+      <div className="px-2 pt-3 pb-1">
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('toggle-rex'))}
+          className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-xs font-semibold transition-colors bg-copper-500/15 border border-copper-500/30 text-copper-400 hover:bg-copper-500/25 hover:text-copper-300"
+        >
+          <MessageSquare className="h-3.5 w-3.5 shrink-0" />
+          Quick Rex
+        </button>
+      </div>
+
       {/* Nav */}
-      <nav className="flex-1 px-2 py-3 space-y-4">
+      <nav className="flex-1 px-2 py-2 space-y-4">
         {navGroups.map((group, gi) => {
           const visibleItems = group.items.filter((item) => {
             if (userRole === 'site_manager') return !SITE_MANAGER_HIDDEN_HREFS.has(item.href)
@@ -156,15 +168,9 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
         })}
       </nav>
 
-      {/* Quick Rex — opens widget panel */}
-      <div className="px-2 pb-2">
-        <button
-          onClick={() => window.dispatchEvent(new CustomEvent('toggle-rex'))}
-          className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-xs font-semibold transition-colors bg-forest-700/30 border border-forest-600/50 text-forest-300 hover:bg-forest-700/50 hover:text-forest-200"
-        >
-          <Sparkles className="h-3.5 w-3.5 shrink-0" />
-          Quick Rex
-        </button>
+      {/* Tagline */}
+      <div className="px-3 pb-2">
+        <p className="text-[8px] font-mono tracking-widest text-forest-500/50 uppercase text-center">Built on solid ground</p>
       </div>
 
       {/* User + sign out */}
