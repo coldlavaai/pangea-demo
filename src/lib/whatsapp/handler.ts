@@ -220,10 +220,10 @@ export async function handleInbound(
 
   console.log('[handler] operativeId:', operativeId, 'intake_state:', thread.intake_state)
 
-  // 7. Amber intake — unknown sender (no operative linked) OR operative in an active intake session
+  // 7. Amber intake — unknown sender OR operative with active intake session (including dashboard-triggered onboarding)
   if (!reply) {
     const terminalStates = ['qualified', 'rejected', 'docs_link_sent']
-    const inIntake = !operativeId || thread.intake_state != null
+    const inIntake = !operativeId || (thread.intake_state != null && thread.intake_state !== '')
     if (inIntake && !terminalStates.includes(thread.intake_state ?? '')) {
       if (!body && numMedia > 0) {
         // Photo sent during text intake — prompt for text
