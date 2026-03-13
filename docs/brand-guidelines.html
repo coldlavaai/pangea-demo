@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pangea — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* PRIMARY - FOREST */
+  --forest-900: #0B2118;
+  --forest-800: #1B4332;
+  --forest-700: #2D6A4F;
+  --forest-600: #40916C;
+  --forest-500: #52B788;
+  --forest-400: #74C69D;
+  --forest-300: #95D5B2;
+  --forest-200: #B7E4C7;
+  --forest-100: #D8F3DC;
+  --forest-50:  #F0FBF4;
+
+  /* ACCENT - COPPER */
+  --copper-900: #5C3A1E;
+  --copper-800: #7A4E2A;
+  --copper-700: #9A6339;
+  --copper-600: #B47543;
+  --copper-500: #C17F59;
+  --copper-400: #D4976F;
+  --copper-300: #E0B08A;
+  --copper-200: #EBCAAA;
+  --copper-100: #F5E2CE;
+  --copper-50:  #FDF6EE;
+
+  /* NEUTRAL */
+  --neutral-950: #0A0A0A;
+  --neutral-900: #1A1A1A;
+  --neutral-800: #2E2E2E;
+  --neutral-700: #444444;
+  --neutral-600: #5C5C5C;
+  --neutral-500: #777777;
+  --neutral-400: #999999;
+  --neutral-300: #BBBBBB;
+  --neutral-200: #DDDDDD;
+  --neutral-100: #EEEEEE;
+  --neutral-50:  #F8F9FA;
+  --white:       #FFFFFF;
+
+  /* SEMANTIC */
+  --success: #2D6A4F;
+  --warning: #E09F3E;
+  --danger:  #D62828;
+  --info:    #457B9D;
+
+  /* STATUS - CONSTRUCTION SPECIFIC */
+  --site-ready:    #2D6A4F;
+  --verifying:     #E09F3E;
+  --non-compliant: #D62828;
+  --pending:       #457B9D;
+  --expired:       #9B2226;
+
+  /* TYPOGRAPHY */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* SPACING */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* RADIUS */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--neutral-900);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+/* COVER */
+.cover {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--forest-800);
+  color: var(--white);
+  padding: var(--space-4xl) var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.cover-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper-400);
+  margin-bottom: var(--space-xl);
+}
+.cover h1 {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1.05;
+  margin-bottom: var(--space-lg);
+}
+.cover h1 span { color: var(--copper-400); }
+.cover-sub {
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  line-height: 1.6;
+}
+.cover-meta {
+  margin-top: var(--space-4xl);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* SECTION HEADERS */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--copper-500);
+  margin-bottom: var(--space-sm);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-lg);
+  line-height: 1.15;
+}
+.section-desc {
+  font-size: 17px;
+  color: var(--neutral-600);
+  max-width: 650px;
+  margin-bottom: var(--space-2xl);
+  line-height: 1.7;
+}
+
+/* DIVIDER */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--copper-500);
+  margin: var(--space-3xl) 0;
+}
+
+/* COLOR SWATCHES */
+.swatch-group {
+  margin-bottom: var(--space-2xl);
+}
+.swatch-group-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+  margin-bottom: var(--space-md);
+}
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: var(--space-sm);
+}
+.swatch {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.4;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.swatch .name { font-weight: 500; }
+.swatch.light-text { color: rgba(255,255,255,0.9); }
+.swatch.dark-text { color: rgba(0,0,0,0.65); }
+
+/* TYPOGRAPHY SHOWCASE */
+.type-specimen {
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--neutral-100);
+}
+.type-specimen:last-child { border-bottom: none; }
+.type-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--copper-500);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.type-display {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--neutral-900);
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+.type-body-sample {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--neutral-700);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.type-mono-sample {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--forest-700);
+  background: var(--forest-50);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--forest-100);
+}
+.type-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--neutral-400);
+  margin-top: var(--space-xs);
+}
+
+/* STATUS BADGES */
+.badge-row {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+}
+.badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.badge-ready { background: #E8F5E9; color: var(--site-ready); }
+.badge-ready::before { background: var(--site-ready); }
+.badge-verifying { background: #FFF8E1; color: #7A6200; }
+.badge-verifying::before { background: var(--verifying); }
+.badge-expired { background: #FFEBEE; color: var(--expired); }
+.badge-expired::before { background: var(--danger); }
+.badge-pending { background: #E3F2FD; color: #1565C0; }
+.badge-pending::before { background: var(--info); }
+
+/* BUTTONS */
+.btn-row {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
+  align-items: center;
+}
+.btn {
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--forest-700); color: white; }
+.btn-primary:hover { background: var(--forest-800); }
+.btn-secondary { background: var(--white); color: var(--forest-700); border: 1.5px solid var(--forest-700); }
+.btn-accent { background: var(--copper-500); color: white; }
+.btn-accent:hover { background: var(--copper-600); }
+.btn-ghost { background: transparent; color: var(--neutral-600); border: 1.5px solid var(--neutral-200); }
+
+/* CARD PREVIEW */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+.card-name { font-weight: 600; font-size: 15px; }
+.card-trade { font-size: 13px; color: var(--neutral-500); margin-bottom: var(--space-md); }
+.card-detail {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--neutral-400);
+  margin-bottom: 4px;
+}
+.card-detail span { color: var(--neutral-700); }
+
+/* DARK MODE PREVIEW */
+.dark-preview {
+  background: var(--neutral-950);
+  color: var(--white);
+  padding: var(--space-3xl);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-2xl);
+}
+.dark-preview .section-title { color: var(--white); }
+.dark-preview .card {
+  background: var(--neutral-800);
+  border-color: var(--neutral-700);
+}
+.dark-preview .card-name { color: var(--white); }
+.dark-preview .card-trade { color: var(--neutral-400); }
+.dark-preview .card-detail { color: var(--neutral-500); }
+.dark-preview .card-detail span { color: var(--neutral-300); }
+
+/* USAGE RULES */
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+.rule {
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-100);
+}
+.rule-do { border-left: 3px solid var(--forest-700); }
+.rule-dont { border-left: 3px solid var(--danger); }
+.rule-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.rule-do .rule-label { color: var(--forest-700); }
+.rule-dont .rule-label { color: var(--danger); }
+.rule p { font-size: 14px; color: var(--neutral-600); line-height: 1.6; }
+
+/* CSS VARS BLOCK */
+.code-block {
+  background: var(--neutral-950);
+  color: #D4D4D4;
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-x: auto;
+  margin-bottom: var(--space-2xl);
+}
+.code-block .comment { color: #6A9955; }
+.code-block .prop { color: #9CDCFE; }
+.code-block .val { color: #CE9178; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">Brand Guidelines / v1.0</div>
+  <h1>Pangea<span>.</span></h1>
+  <div class="cover-sub">One connected platform. Every worker verified, inducted, and site-ready. Built on solid ground.</div>
+  <div class="cover-meta">Cold Lava AI Ltd — March 2026 — Confidential</div>
+</div>
+
+<!-- COLOUR PALETTE -->
+<div class="page">
+  <div class="divider"></div>
+  <div class="section-label">01 / Colour Palette</div>
+  <div class="section-title">Terrain & Topo</div>
+  <div class="section-desc">Deep forest greens ground the brand in earth, land, and permanence. Copper accents bring warmth and signal action. Together they create a palette that says: solid, trusted, and built for the real world.</div>
+
+  <div class="swatch-group">
+    <div class="swatch-group-title">Primary — Forest</div>
+    <div class="swatches">
+      <div class="swatch light-text" style="background:#0B2118"><div class="name">900</div>#0B2118</div>
+      <div class="swatch light-text" style="background:#1B4332"><div class="name">800</div>#1B4332</div>
+      <div class="swatch light-text" style="background:#2D6A4F"><div class="name">700</div>#2D6A4F</div>
+      <div class="swatch light-text" style="background:#40916C"><div class="name">600</div>#40916C</div>
+      <div class="swatch light-text" style="background:#52B788"><div class="name">500</div>#52B788</div>
+      <div class="swatch dark-text" style="background:#74C69D"><div class="name">400</div>#74C69D</div>
+      <div class="swatch dark-text" style="background:#95D5B2"><div class="name">300</div>#95D5B2</div>
+      <div class="swatch dark-text" style="background:#B7E4C7"><div class="name">200</div>#B7E4C7</div>
+      <div class="swatch dark-text" style="background:#D8F3DC"><div class="name">100</div>#D8F3DC</div>
+      <div class="swatch dark-text" style="background:#F0FBF4"><div class="name">50</div>#F0FBF4</div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="swatch-group-title">Accent — Copper</div>
+    <div class="swatches">
+      <div class="swatch light-text" style="background:#5C3A1E"><div class="name">900</div>#5C3A1E</div>
+      <div class="swatch light-text" style="background:#7A4E2A"><div class="name">800</div>#7A4E2A</div>
+      <div class="swatch light-text" style="background:#9A6339"><div class="name">700</div>#9A6339</div>
+      <div class="swatch light-text" style="background:#B47543"><div class="name">600</div>#B47543</div>
+      <div class="swatch light-text" style="background:#C17F59"><div class="name">500</div>#C17F59</div>
+      <div class="swatch dark-text" style="background:#D4976F"><div class="name">400</div>#D4976F</div>
+      <div class="swatch dark-text" style="background:#E0B08A"><div class="name">300</div>#E0B08A</div>
+      <div class="swatch dark-text" style="background:#EBCAAA"><div class="name">200</div>#EBCAAA</div>
+      <div class="swatch dark-text" style="background:#F5E2CE"><div class="name">100</div>#F5E2CE</div>
+      <div class="swatch dark-text" style="background:#FDF6EE"><div class="name">50</div>#FDF6EE</div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="swatch-group-title">Neutral</div>
+    <div class="swatches">
+      <div class="swatch light-text" style="background:#0A0A0A"><div class="name">950</div>#0A0A0A</div>
+      <div class="swatch light-text" style="background:#1A1A1A"><div class="name">900</div>#1A1A1A</div>
+      <div class="swatch light-text" style="background:#2E2E2E"><div class="name">800</div>#2E2E2E</div>
+      <div class="swatch light-text" style="background:#444444"><div class="name">700</div>#444444</div>
+      <div class="swatch light-text" style="background:#5C5C5C"><div class="name">600</div>#5C5C5C</div>
+      <div class="swatch dark-text" style="background:#999999"><div class="name">400</div>#999999</div>
+      <div class="swatch dark-text" style="background:#BBBBBB"><div class="name">300</div>#BBBBBB</div>
+      <div class="swatch dark-text" style="background:#DDDDDD"><div class="name">200</div>#DDDDDD</div>
+      <div class="swatch dark-text" style="background:#EEEEEE"><div class="name">100</div>#EEEEEE</div>
+      <div class="swatch dark-text" style="background:#F8F9FA"><div class="name">50</div>#F8F9FA</div>
+    </div>
+  </div>
+
+  <div class="swatch-group">
+    <div class="swatch-group-title">Semantic / Status</div>
+    <div class="swatches">
+      <div class="swatch light-text" style="background:#2D6A4F"><div class="name">Site Ready</div>#2D6A4F</div>
+      <div class="swatch dark-text" style="background:#E09F3E"><div class="name">Verifying</div>#E09F3E</div>
+      <div class="swatch light-text" style="background:#D62828"><div class="name">Non-Compliant</div>#D62828</div>
+      <div class="swatch light-text" style="background:#457B9D"><div class="name">Pending</div>#457B9D</div>
+      <div class="swatch light-text" style="background:#9B2226"><div class="name">Expired</div>#9B2226</div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="divider"></div>
+  <div class="section-label">02 / Typography</div>
+  <div class="section-title">Three Voices</div>
+  <div class="section-desc">A display serif for presence, a modern sans for clarity, and a monospace for data. Each has a job. None overlap.</div>
+
+  <div class="type-specimen">
+    <div class="type-label">Display — DM Serif Display</div>
+    <div class="type-display">Pangea.</div>
+    <div class="type-display" style="font-size:32px;">One Platform. Every Worker. Site Ready.</div>
+    <div class="type-meta">Use for: brand name, hero headings, section titles. Never for body text or UI labels.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">Body — DM Sans</div>
+    <div class="type-body-sample">Site Ready automates everything between finding a construction worker and getting them on site — cert verified, right-to-work checked, H&S signed off — all on their phone, no paperwork. Workers move from application to site-ready through a single messaging thread.</div>
+    <div class="type-meta">Use for: body text, buttons, navigation, form labels. Weights 300–700. Primary workhorse.</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-label">Mono — JetBrains Mono</div>
+    <div class="type-mono-sample">CSCS-BLUE-2847 &nbsp;|&nbsp; EXPIRY: 2027-03-15 &nbsp;|&nbsp; STATUS: VERIFIED &nbsp;|&nbsp; SITE: NORTHERN-014</div>
+    <div class="type-meta">Use for: data values, status labels, card numbers, timestamps, code, technical references.</div>
+  </div>
+
+  <!-- TYPE SCALE -->
+  <div class="swatch-group" style="margin-top: var(--space-2xl)">
+    <div class="swatch-group-title">Type Scale</div>
+    <table style="width:100%; border-collapse:collapse; font-size:14px;">
+      <tr style="border-bottom:1px solid #eee; height:48px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;width:120px;">Display XL</td>
+        <td style="font-family:var(--font-display);font-size:48px;">Pangea</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">48px / 1.1</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee; height:44px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Display L</td>
+        <td style="font-family:var(--font-display);font-size:36px;">Section Heading</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">36px / 1.15</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee; height:40px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Heading 1</td>
+        <td style="font-family:var(--font-body);font-size:24px;font-weight:700;">Page Title</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">24px / 1.3</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee; height:36px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Heading 2</td>
+        <td style="font-family:var(--font-body);font-size:18px;font-weight:600;">Card Title</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">18px / 1.4</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee; height:36px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Body</td>
+        <td style="font-family:var(--font-body);font-size:15px;">Worker onboarding paragraph text</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">15px / 1.6</td>
+      </tr>
+      <tr style="border-bottom:1px solid #eee; height:34px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Small</td>
+        <td style="font-family:var(--font-body);font-size:13px;color:#666;">Supporting caption text</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">13px / 1.5</td>
+      </tr>
+      <tr style="height:32px;">
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;">Label</td>
+        <td style="font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#999;">SECTION LABEL</td>
+        <td style="font-family:var(--font-mono);font-size:11px;color:#999;text-align:right;">11px / 1.4 / 2px tracking</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div class="divider"></div>
+  <div class="section-label">03 / Components</div>
+  <div class="section-title">UI Building Blocks</div>
+
+  <div class="swatch-group-title" style="margin-bottom:var(--space-md)">Status Badges</div>
+  <div class="badge-row">
+    <span class="badge badge-ready">Site Ready</span>
+    <span class="badge badge-verifying">Verifying</span>
+    <span class="badge badge-pending">Pending</span>
+    <span class="badge badge-expired">Non-Compliant</span>
+  </div>
+
+  <div class="swatch-group-title" style="margin-bottom:var(--space-md)">Buttons</div>
+  <div class="btn-row">
+    <button class="btn btn-primary">Verify Worker</button>
+    <button class="btn btn-secondary">View Profile</button>
+    <button class="btn btn-accent">Assign to Site</button>
+    <button class="btn btn-ghost">Export Report</button>
+  </div>
+
+  <div class="swatch-group-title" style="margin-bottom:var(--space-md)">Worker Cards — Light Mode</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-name">James Mitchell</div>
+        <span class="badge badge-ready">Site Ready</span>
+      </div>
+      <div class="card-trade">Bricklayer — Blue CSCS</div>
+      <div class="card-detail">CSCS: <span>CSCS-2847-BLU</span></div>
+      <div class="card-detail">Expiry: <span>15 Mar 2027</span></div>
+      <div class="card-detail">Site: <span>Northern Gateway Phase 2</span></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-name">Tomasz Kowalski</div>
+        <span class="badge badge-verifying">Verifying</span>
+      </div>
+      <div class="card-trade">Scaffolder — Gold CSCS</div>
+      <div class="card-detail">CSCS: <span>Pending AI check</span></div>
+      <div class="card-detail">RTW: <span>Uploaded</span></div>
+      <div class="card-detail">H&S: <span>Quiz incomplete</span></div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-name">Ryan Davies</div>
+        <span class="badge badge-expired">Non-Compliant</span>
+      </div>
+      <div class="card-trade">Labourer — Green CSCS</div>
+      <div class="card-detail">CSCS: <span style="color:#D62828">Expired 01 Feb 2026</span></div>
+      <div class="card-detail">RTW: <span>Valid</span></div>
+      <div class="card-detail">H&S: <span>Passed</span></div>
+    </div>
+  </div>
+
+  <!-- DARK MODE -->
+  <div class="dark-preview">
+    <div class="swatch-group-title" style="color:var(--neutral-400);margin-bottom:var(--space-md)">Worker Cards — Dark Mode</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">James Mitchell</div>
+          <span class="badge badge-ready">Site Ready</span>
+        </div>
+        <div class="card-trade">Bricklayer — Blue CSCS</div>
+        <div class="card-detail">CSCS: <span>CSCS-2847-BLU</span></div>
+        <div class="card-detail">Expiry: <span>15 Mar 2027</span></div>
+        <div class="card-detail">Site: <span>Northern Gateway Phase 2</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Tomasz Kowalski</div>
+          <span class="badge badge-verifying">Verifying</span>
+        </div>
+        <div class="card-trade">Scaffolder — Gold CSCS</div>
+        <div class="card-detail">CSCS: <span>Pending AI check</span></div>
+        <div class="card-detail">RTW: <span>Uploaded</span></div>
+        <div class="card-detail">H&S: <span>Quiz incomplete</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">Ryan Davies</div>
+          <span class="badge badge-expired">Non-Compliant</span>
+        </div>
+        <div class="card-trade">Labourer — Green CSCS</div>
+        <div class="card-detail">CSCS: <span style="color:#EF5350">Expired 01 Feb 2026</span></div>
+        <div class="card-detail">RTW: <span>Valid</span></div>
+        <div class="card-detail">H&S: <span>Passed</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USAGE RULES -->
+  <div class="divider"></div>
+  <div class="section-label">04 / Usage Rules</div>
+  <div class="section-title">Do & Don't</div>
+
+  <div class="rules-grid">
+    <div class="rule rule-do">
+      <div class="rule-label">Do</div>
+      <p>Use Forest-800 (#1B4332) as the primary brand colour for navigation, headers, and primary actions.</p>
+    </div>
+    <div class="rule rule-dont">
+      <div class="rule-label">Don't</div>
+      <p>Use forest green for error states or destructive actions. Red is always danger. Green is always safe/verified.</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">Do</div>
+      <p>Use Copper-500 (#C17F59) sparingly for CTAs, accent highlights, and attention-drawing elements.</p>
+    </div>
+    <div class="rule rule-dont">
+      <div class="rule-label">Don't</div>
+      <p>Use copper as a background fill or for large surface areas. It's an accent, not a primary.</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">Do</div>
+      <p>Use DM Serif Display only for the brand name and major section headings. Keep it special.</p>
+    </div>
+    <div class="rule rule-dont">
+      <div class="rule-label">Don't</div>
+      <p>Use the display serif for buttons, form labels, table headers, or body text. That's DM Sans territory.</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">Do</div>
+      <p>Use monospace (JetBrains Mono) for all data: CSCS numbers, dates, statuses, worker IDs, timestamps.</p>
+    </div>
+    <div class="rule rule-dont">
+      <div class="rule-label">Don't</div>
+      <p>Mix data fonts. If a value is a number, date, or status code, it's always monospace. No exceptions.</p>
+    </div>
+  </div>
+
+  <!-- VOICE & TONE -->
+  <div class="divider"></div>
+  <div class="section-label">05 / Voice & Tone</div>
+  <div class="section-title">How Pangea Speaks</div>
+
+  <div class="rules-grid">
+    <div class="rule rule-do">
+      <div class="rule-label">The Voice</div>
+      <p><strong>Direct.</strong> Construction people don't have time for waffle. Say what it does. Say what it costs. Say how long it takes. Done.</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">The Voice</div>
+      <p><strong>Grounded.</strong> No jargon. No "leverage synergies." Workers use this product. Speak like a site manager, not a SaaS marketer.</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">Example</div>
+      <p><strong>Good:</strong> "Worker verified. CSCS valid until March 2027. Ready for site."<br><strong>Bad:</strong> "Congratulations! Your onboarding journey is complete. Welcome aboard!"</p>
+    </div>
+    <div class="rule rule-do">
+      <div class="rule-label">Example</div>
+      <p><strong>Good:</strong> "3 cards expire this month. View workers."<br><strong>Bad:</strong> "Action required: Please review your upcoming certification renewals dashboard."</p>
+    </div>
+  </div>
+
+  <!-- CSS VARIABLES -->
+  <div class="divider"></div>
+  <div class="section-label">06 / Implementation</div>
+  <div class="section-title">Tailwind Config</div>
+  <div class="section-desc">Drop this into your tailwind.config.ts to use across the entire app.</div>
+
+  <div class="code-block">
+<span class="comment">// tailwind.config.ts — Pangea theme</span>
+colors: {
+  forest: {
+    <span class="prop">50</span>:  <span class="val">'#F0FBF4'</span>,
+    <span class="prop">100</span>: <span class="val">'#D8F3DC'</span>,
+    <span class="prop">200</span>: <span class="val">'#B7E4C7'</span>,
+    <span class="prop">300</span>: <span class="val">'#95D5B2'</span>,
+    <span class="prop">400</span>: <span class="val">'#74C69D'</span>,
+    <span class="prop">500</span>: <span class="val">'#52B788'</span>,
+    <span class="prop">600</span>: <span class="val">'#40916C'</span>,
+    <span class="prop">700</span>: <span class="val">'#2D6A4F'</span>,  <span class="comment">// Primary action</span>
+    <span class="prop">800</span>: <span class="val">'#1B4332'</span>,  <span class="comment">// Nav / headers</span>
+    <span class="prop">900</span>: <span class="val">'#0B2118'</span>,
+  },
+  copper: {
+    <span class="prop">50</span>:  <span class="val">'#FDF6EE'</span>,
+    <span class="prop">100</span>: <span class="val">'#F5E2CE'</span>,
+    <span class="prop">200</span>: <span class="val">'#EBCAAA'</span>,
+    <span class="prop">300</span>: <span class="val">'#E0B08A'</span>,
+    <span class="prop">400</span>: <span class="val">'#D4976F'</span>,
+    <span class="prop">500</span>: <span class="val">'#C17F59'</span>,  <span class="comment">// Accent / CTA</span>
+    <span class="prop">600</span>: <span class="val">'#B47543'</span>,
+    <span class="prop">700</span>: <span class="val">'#9A6339'</span>,
+    <span class="prop">800</span>: <span class="val">'#7A4E2A'</span>,
+    <span class="prop">900</span>: <span class="val">'#5C3A1E'</span>,
+  },
+  status: {
+    <span class="prop">ready</span>:     <span class="val">'#2D6A4F'</span>,  <span class="comment">// Site Ready</span>
+    <span class="prop">verifying</span>:  <span class="val">'#E09F3E'</span>,  <span class="comment">// In progress</span>
+    <span class="prop">danger</span>:     <span class="val">'#D62828'</span>,  <span class="comment">// Non-compliant</span>
+    <span class="prop">pending</span>:    <span class="val">'#457B9D'</span>,  <span class="comment">// Awaiting action</span>
+    <span class="prop">expired</span>:    <span class="val">'#9B2226'</span>,  <span class="comment">// Cert expired</span>
+  },
+},
+fontFamily: {
+  <span class="prop">display</span>: [<span class="val">'DM Serif Display'</span>, <span class="val">'Georgia'</span>, <span class="val">'serif'</span>],
+  <span class="prop">sans</span>:    [<span class="val">'DM Sans'</span>, <span class="val">'system-ui'</span>, <span class="val">'sans-serif'</span>],
+  <span class="prop">mono</span>:    [<span class="val">'JetBrains Mono'</span>, <span class="val">'Fira Code'</span>, <span class="val">'monospace'</span>],
+},
+  </div>
+
+  <div style="text-align:center; padding: var(--space-3xl) 0; color: var(--neutral-400); font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">
+    Pangea Brand Guidelines — Cold Lava AI Ltd — March 2026
+  </div>
+</div>
+
+</body>
+</html>

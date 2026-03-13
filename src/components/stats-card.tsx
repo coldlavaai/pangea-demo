@@ -14,22 +14,21 @@ export function StatsCard({ title, value, secondary, icon: Icon, className }: St
   return (
     <div
       className={cn(
-        'relative rounded-lg border border-slate-700/50 bg-gradient-to-br from-slate-800/60 to-slate-900/80 px-4 py-3 overflow-hidden',
+        'relative rounded-xl border border-border bg-card px-4 py-3 overflow-hidden transition-shadow hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)]',
         className
       )}
     >
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-600/40 to-transparent" />
       <div className="flex items-center justify-between gap-2">
         <div className="flex-1 min-w-0">
-          <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wide leading-none">{title}</p>
-          <p className="mt-1 text-xl font-bold text-slate-100 leading-none tabular-nums">{value}</p>
+          <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide leading-none">{title}</p>
+          <p className="mt-1 text-xl font-mono font-bold text-foreground leading-none tabular-nums">{value}</p>
           {secondary && (
-            <p className="mt-0.5 text-[10px] text-slate-500">{secondary}</p>
+            <p className="mt-0.5 text-[10px] font-mono text-muted-foreground">{secondary}</p>
           )}
         </div>
         {Icon && (
-          <div className="rounded-md bg-slate-800 border border-slate-700/50 p-1.5 shrink-0">
-            <Icon className="h-3.5 w-3.5 text-slate-400" />
+          <div className="rounded-md bg-forest-700/10 dark:bg-forest-700/20 border border-forest-700/20 p-1.5 shrink-0">
+            <Icon className="h-3.5 w-3.5 text-forest-600 dark:text-forest-400" />
           </div>
         )}
       </div>

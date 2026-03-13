@@ -109,13 +109,13 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
   }
 
   return (
-    <aside className="flex flex-col w-40 shrink-0 h-screen bg-gradient-to-b from-slate-900 to-slate-950 border-r border-slate-800/60 overflow-y-auto">
+    <aside className="flex flex-col w-40 shrink-0 h-screen bg-forest-800 border-r border-forest-700/30 overflow-y-auto">
       {/* Logo */}
-      <div className="flex items-center gap-2 px-3 py-2.5 border-b border-slate-800/60">
+      <div className="flex items-center gap-2 px-3 py-2.5 border-b border-forest-700/30">
         <img src="/pangaea-mark.png" className="h-6 w-6 object-contain shrink-0" alt="Pangaea" />
         <div className="flex flex-col min-w-0 flex-1">
-          <span className="font-bold text-slate-100 text-[11px] leading-tight">Pangaea</span>
-          <span className="text-[9px] text-slate-500 leading-tight">Workforce</span>
+          <span className="font-display text-forest-100 text-[11px] leading-tight">Pangaea<span className="text-copper-500">.</span></span>
+          <span className="text-[9px] text-forest-400 leading-tight">Workforce</span>
         </div>
         <AlertsBell />
       </div>
@@ -132,7 +132,7 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
           return (
           <div key={gi}>
             {group.label && (
-              <p className="px-2 mb-0.5 text-[9px] font-semibold tracking-widest text-slate-600/80 uppercase">
+              <p className="px-2 mb-0.5 text-[9px] font-semibold tracking-widest text-forest-500/80 uppercase">
                 {group.label}
               </p>
             )}
@@ -146,8 +146,8 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
                       className={cn(
                         'flex items-center gap-2 rounded-md px-2 py-1.5 text-xs font-medium transition-colors',
                         active
-                          ? 'bg-emerald-500/10 text-emerald-400 border-l-2 border-emerald-500 pl-[6px] shadow-sm shadow-emerald-500/10'
-                          : 'text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
+                          ? 'bg-forest-500/10 text-forest-300 border-l-2 border-forest-400 pl-[6px] shadow-sm shadow-forest-500/10'
+                          : 'text-forest-300/70 hover:bg-forest-700/50 hover:text-forest-100'
                       )}
                     >
                       <item.icon className="h-3.5 w-3.5 shrink-0" />
@@ -166,7 +166,7 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
       <div className="px-2 pb-2">
         <button
           onClick={() => window.dispatchEvent(new CustomEvent('toggle-rex'))}
-          className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-xs font-semibold transition-colors bg-emerald-900/30 border border-emerald-800/50 text-emerald-400 hover:bg-emerald-900/50 hover:text-emerald-300"
+          className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-xs font-semibold transition-colors bg-forest-700/30 border border-forest-600/50 text-forest-300 hover:bg-forest-700/50 hover:text-forest-200"
         >
           <Sparkles className="h-3.5 w-3.5 shrink-0" />
           Quick Rex
@@ -174,16 +174,16 @@ export function Sidebar({ userEmail, userRole }: SidebarProps) {
       </div>
 
       {/* User + sign out */}
-      <div className="border-t border-slate-800/60 p-2">
-        <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-slate-800/40">
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-900 text-emerald-400 text-[10px] font-bold uppercase">
+      <div className="border-t border-forest-700/30 p-2">
+        <div className="flex items-center gap-2 px-2 py-1.5 rounded-lg bg-forest-900/40">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest-700 text-forest-200 text-[10px] font-bold uppercase">
             {userEmail?.[0] ?? 'A'}
           </div>
-          <span className="flex-1 truncate text-[10px] text-slate-400">{userEmail ?? 'Admin'}</span>
+          <span className="flex-1 truncate text-[10px] text-forest-300/70">{userEmail ?? 'Admin'}</span>
           <button
             onClick={handleSignOut}
             title="Sign out"
-            className="text-slate-600 hover:text-slate-300 transition-colors shrink-0"
+            className="text-forest-500 hover:text-forest-200 transition-colors shrink-0"
           >
             <LogOut className="h-3.5 w-3.5" />
           </button>

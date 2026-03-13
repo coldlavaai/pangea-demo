@@ -77,25 +77,25 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-forest-800 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
 
         {/* Logo / Brand */}
         <div className="text-center mb-8">
           <img src="/pangaea-mark.png" className="w-24 mx-auto mb-4" alt="Pangaea" />
-          <p className="text-2xl font-bold tracking-[0.3em] text-[#C4A84A]">Pangaea</p>
-          <p className="text-xs tracking-[0.25em] text-[#C4A84A]/70 uppercase mt-1">Workforce Management</p>
+          <p className="text-2xl font-display tracking-[0.3em] text-forest-100">Pangaea</p>
+          <p className="text-xs font-sans tracking-[0.25em] text-forest-300/70 uppercase mt-1">Workforce Management</p>
         </div>
 
         {/* Card */}
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
-          <h2 className="text-lg font-semibold text-slate-100 mb-6">Sign in</h2>
+        <div className="bg-forest-900 border border-forest-700/30 rounded-xl p-8">
+          <h2 className="text-lg font-semibold text-forest-100 mb-6">Sign in</h2>
 
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
 
             {/* Email */}
             <div className="space-y-1.5">
-              <Label htmlFor="email" className="text-sm font-medium text-slate-300">
+              <Label htmlFor="email" className="text-sm font-medium text-forest-200">
                 Email
               </Label>
               <Input
@@ -103,7 +103,7 @@ export default function LoginPage() {
                 type="email"
                 autoComplete="email"
                 placeholder="you@company.co.uk"
-                className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500 focus-visible:ring-emerald-500"
+                className="bg-forest-800 border-forest-700/50 text-forest-100 placeholder:text-forest-500 focus-visible:ring-forest-400"
                 {...register('email')}
               />
               {errors.email && (
@@ -113,7 +113,7 @@ export default function LoginPage() {
 
             {/* Password */}
             <div className="space-y-1.5">
-              <Label htmlFor="password" className="text-sm font-medium text-slate-300">
+              <Label htmlFor="password" className="text-sm font-medium text-forest-200">
                 Password
               </Label>
               <div className="relative">
@@ -122,13 +122,13 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   placeholder="••••••••"
-                  className="bg-slate-800 border-slate-700 text-slate-100 placeholder:text-slate-500 focus-visible:ring-emerald-500 pr-10"
+                  className="bg-forest-800 border-forest-700/50 text-forest-100 placeholder:text-forest-500 focus-visible:ring-forest-400 pr-10"
                   {...register('password')}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-forest-400 hover:text-forest-200 transition-colors"
                   tabIndex={-1}
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
@@ -142,15 +142,15 @@ export default function LoginPage() {
 
             {/* Server error */}
             {serverError && (
-              <div className="rounded-lg bg-red-950 border border-red-800 px-3 py-2">
+              <div className="rounded-lg bg-red-950/50 border border-red-800/50 px-3 py-2">
                 <p className="text-sm text-red-400">{serverError}</p>
               </div>
             )}
 
             {/* Reset sent confirmation */}
             {resetSent && (
-              <div className="rounded-lg bg-emerald-950 border border-emerald-800 px-3 py-2">
-                <p className="text-sm text-emerald-400">
+              <div className="rounded-lg bg-forest-700/30 border border-forest-600/50 px-3 py-2">
+                <p className="text-sm text-forest-300">
                   Password reset email sent. Check your inbox.
                 </p>
               </div>
@@ -160,7 +160,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium mt-2"
+              className="w-full bg-forest-700 hover:bg-forest-600 text-white font-medium mt-2"
             >
               {isSubmitting ? 'Signing in…' : 'Sign in'}
             </Button>
@@ -173,7 +173,7 @@ export default function LoginPage() {
               type="button"
               onClick={handleForgotPassword}
               disabled={resetLoading}
-              className="text-sm text-slate-400 hover:text-slate-200 transition-colors disabled:opacity-50"
+              className="text-sm text-forest-400 hover:text-forest-200 transition-colors disabled:opacity-50"
             >
               {resetLoading ? 'Sending…' : 'Forgot password?'}
             </button>
@@ -181,8 +181,8 @@ export default function LoginPage() {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-xs text-slate-600 mt-6">
-          No account? Contact Cold Lava to get set up.
+        <p className="text-center text-xs text-forest-500 mt-6">
+          No account? Contact your administrator.
         </p>
 
       </div>
