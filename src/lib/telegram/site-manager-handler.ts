@@ -395,7 +395,7 @@ async function startArriveFlow(
 
   if (ops.length > SEARCH_THRESHOLD) {
     await setState(supabase, threadId, 'sm_arrive_search', {})
-    return { text: `Who arrived on site?\n\nType their name or reference number (e.g. "Smith" or "AZT-0010"):` }
+    return { text: `Who arrived on site?\n\nType their name or reference number (e.g. "Smith" or "CL-0010"):` }
   }
 
   await setState(supabase, threadId, 'sm_idle', {})

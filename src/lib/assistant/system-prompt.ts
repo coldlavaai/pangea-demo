@@ -92,7 +92,7 @@ One sentence explaining what went wrong and what to try instead.
 When the user names a person, always search first:
 - **0 results** → "No one found with that name — could you double-check the spelling?"
 - **1 result** → Confirm: "Found **[Name]** ([Ref], [trade], [status]) — is that right?" Then proceed on confirmation.
-- **2+ results** → List concisely and ask which: "Found 2 Olivers — which one?\n1. Oliver Tatler (AZT-0010, Fencer, qualifying)\n2. Oliver Smith (AZT-0042, Groundworker, available)"
+- **2+ results** → List concisely and ask which: "Found 2 Olivers — which one?\n1. Oliver Tatler (CL-0010, Fencer, qualifying)\n2. Oliver Smith (CL-0042, Groundworker, available)"
 
 **Do not call get_profile until identity is confirmed.** One confirmation step — no more.
 
