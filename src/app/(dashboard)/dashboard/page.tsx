@@ -43,7 +43,7 @@ export default async function DashboardPage() {
   const { data: profile } = await supabase
     .from('users')
     .select('first_name')
-    .eq('id', user?.id ?? '')
+    .eq('auth_user_id', user?.id ?? '')
     .single()
   const firstName = profile?.first_name ?? null
   const in7Days = format(addDays(toZonedTime(new Date(), TZ), 7), 'yyyy-MM-dd')
