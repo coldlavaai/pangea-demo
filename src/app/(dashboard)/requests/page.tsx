@@ -92,39 +92,49 @@ export default async function RequestsPage({
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{pendingCount ?? 0}</span>
+          <span className="text-lg font-bold text-amber-400 tabular-nums">{pendingCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Pending</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Search className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{searchingCount ?? 0}</span>
+          <span className="text-lg font-bold text-orange-400 tabular-nums">{searchingCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Searching</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{fulfilledCount ?? 0}</span>
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{fulfilledCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Fulfilled</span>
         </div>
       </div>
 
-      {/* Status filter */}
-      <div className="flex flex-wrap gap-2">
-        {statuses.map(({ value, label }) => {
-          const active = (params.status ?? '') === value
-          return (
-            <Link
-              key={value || 'all'}
-              href={value ? `/requests?status=${value}` : '/requests'}
-              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
-                active
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'border-input bg-background hover:bg-muted'
-              }`}
-            >
-              {label}
-            </Link>
-          )
-        })}
+      {/* Search + Status filter */}
+      <div className="flex items-center gap-3">
+        <div className="relative flex-1 max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Search site, trade..."
+            className="w-full pl-9 pr-3 py-1.5 text-sm bg-background border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-forest-600"
+          />
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {statuses.map(({ value, label }) => {
+            const active = (params.status ?? '') === value
+            return (
+              <Link
+                key={value || 'all'}
+                href={value ? `/requests?status=${value}` : '/requests'}
+                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
+                  active
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'border-input bg-background hover:bg-muted'
+                }`}
+              >
+                {label}
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
       {/* Table */}
@@ -149,39 +159,53 @@ export default async function RequestsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-4 py-3 font-medium">Site</th>
-                <th className="text-left px-4 py-3 font-medium">Trade</th>
-                <th className="text-left px-4 py-3 font-medium">Headcount</th>
-                <th className="text-left px-4 py-3 font-medium">Start</th>
-                <th className="text-left px-4 py-3 font-medium">Day Rate</th>
-                <th className="text-left px-4 py-3 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Site</th>
+                <th className="text-left px-3 py-2.5 font-medium">Trade</th>
+                <th className="text-left px-3 py-2.5 font-medium">Headcount</th>
+                <th className="text-left px-3 py-2.5 font-medium">Start</th>
+                <th className="text-left px-3 py-2.5 font-medium">End</th>
+                <th className="text-left px-3 py-2.5 font-medium">Day Rate</th>
+                <th className="text-left px-3 py-2.5 font-medium">Value</th>
+                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Created</th>
               </tr>
             </thead>
             <tbody>
               {requests.map((req) => {
                 const site = req.site as { name: string } | null
                 const trade = req.trade_category as { name: string } | null
+                const totalValue = req.day_rate != null && req.headcount_required != null
+                  ? req.headcount_required * Number(req.day_rate)
+                  : null
                 return (
                   <tr key={req.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       <Link href={`/requests/${req.id}`} className="font-medium hover:underline">
                         {site?.name ?? '—'}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{trade?.name ?? 'Any'}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5 text-muted-foreground">{trade?.name ?? 'Any'}</td>
+                    <td className="px-3 py-2.5 tabular-nums">
                       <span className="font-medium">{req.headcount_filled}</span>
                       <span className="text-muted-foreground">/{req.headcount_required}</span>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">
+                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
                       {new Date(req.start_date).toLocaleDateString('en-GB')}
-                      {req.end_date && ` → ${new Date(req.end_date).toLocaleDateString('en-GB')}`}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                      {req.end_date ? new Date(req.end_date).toLocaleDateString('en-GB') : '—'}
+                    </td>
+                    <td className="px-3 py-2.5 tabular-nums">
                       {req.day_rate != null ? `£${Number(req.day_rate).toFixed(2)}` : '—'}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5 tabular-nums font-medium">
+                      {totalValue != null ? `£${totalValue.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
+                    </td>
+                    <td className="px-3 py-2.5">
                       <StatusBadge status={req.status ?? 'pending'} />
+                    </td>
+                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                      {req.created_at ? new Date(req.created_at).toLocaleDateString('en-GB') : '—'}
                     </td>
                   </tr>
                 )
@@ -191,7 +215,7 @@ export default async function RequestsPage({
 
           {totalPages > 1 && (
             <div className="flex items-center justify-between px-4 py-3 border-t bg-muted/20">
-              <span className="text-xs text-muted-foreground">
+              <span className="text-[10px] text-muted-foreground">
                 Showing {offset + 1}–{Math.min(offset + PAGE_SIZE, filteredCount ?? 0)} of {filteredCount}
               </span>
               <div className="flex gap-2">

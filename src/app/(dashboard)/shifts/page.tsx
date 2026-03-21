@@ -1,6 +1,6 @@
 import { createServiceClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { Calendar, Clock, Zap, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Calendar, Clock, Zap, CheckCircle2, ChevronLeft, ChevronRight, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PageHeader } from '@/components/page-header'
 import { StatusBadge } from '@/components/status-badge'
@@ -87,22 +87,22 @@ export default async function ShiftsPage({
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{scheduledCount ?? 0}</span>
+          <span className="text-lg font-bold text-amber-400 tabular-nums">{scheduledCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Scheduled</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Zap className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{inProgressCount ?? 0}</span>
+          <span className="text-lg font-bold text-blue-400 tabular-nums">{inProgressCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">In Progress</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{completedCount ?? 0}</span>
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{completedCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Completed</span>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {statuses.map(({ value, label }) => (
           <Link
             key={value || 'all'}
@@ -116,6 +116,14 @@ export default async function ShiftsPage({
             {label}
           </Link>
         ))}
+        <div className="ml-auto relative">
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Search operative, site..."
+            className="h-8 w-56 rounded-md border border-input bg-background pl-8 pr-3 text-xs placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+          />
+        </div>
       </div>
 
       {!shifts || shifts.length === 0 ? (
@@ -125,11 +133,14 @@ export default async function ShiftsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-4 py-3 font-medium">Operative</th>
-                <th className="text-left px-4 py-3 font-medium">Site</th>
-                <th className="text-left px-4 py-3 font-medium">Scheduled</th>
-                <th className="text-left px-4 py-3 font-medium">Flags</th>
-                <th className="text-left px-4 py-3 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-2.5 font-medium">Site</th>
+                <th className="text-left px-3 py-2.5 font-medium">Scheduled</th>
+                <th className="text-left px-3 py-2.5 font-medium">Actual</th>
+                <th className="text-left px-3 py-2.5 font-medium">Break</th>
+                <th className="text-left px-3 py-2.5 font-medium">Hours</th>
+                <th className="text-left px-3 py-2.5 font-medium">Flags</th>
+                <th className="text-left px-3 py-2.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -148,7 +159,7 @@ export default async function ShiftsPage({
                 site: { id: string; name: string } | null
               }>).map((shift) => (
                 <tr key={shift.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <Link href={`/shifts/${shift.id}`} className="font-medium hover:underline">
                       {shift.operative ? `${shift.operative.first_name} ${shift.operative.last_name}` : '—'}
                     </Link>
@@ -156,14 +167,28 @@ export default async function ShiftsPage({
                       <div className="text-xs text-muted-foreground font-mono">{shift.operative.reference_number}</div>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground">
+                  <td className="px-3 py-2.5 text-muted-foreground">
                     {shift.site ? <Link href={`/sites/${shift.site.id}`} className="hover:underline">{shift.site.name}</Link> : '—'}
                   </td>
-                  <td className="px-4 py-3 text-xs text-muted-foreground">
+                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
                     <div>{fmtDateTime(shift.scheduled_start)}</div>
                     <div>→ {fmtDateTime(shift.scheduled_end)}</div>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
+                    {shift.actual_start && shift.actual_end ? (
+                      <>
+                        <div>{fmtDateTime(shift.actual_start)}</div>
+                        <div>→ {fmtDateTime(shift.actual_end)}</div>
+                      </>
+                    ) : '—'}
+                  </td>
+                  <td className="px-3 py-2.5 tabular-nums text-muted-foreground">{shift.break_minutes ?? 0}m</td>
+                  <td className="px-3 py-2.5 tabular-nums font-medium">
+                    {shift.actual_start && shift.actual_end
+                      ? ((new Date(shift.actual_end).getTime() - new Date(shift.actual_start).getTime()) / 3600000 - (shift.break_minutes ?? 0) / 60).toFixed(1)
+                      : '—'}
+                  </td>
+                  <td className="px-3 py-2.5">
                     <div className="flex flex-wrap gap-1">
                       {shift.wtd_overnight_flag && (
                         <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-1.5 py-0.5 rounded">Overnight</span>
@@ -176,7 +201,7 @@ export default async function ShiftsPage({
                       )}
                     </div>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <StatusBadge status={shift.status ?? 'scheduled'} />
                   </td>
                 </tr>

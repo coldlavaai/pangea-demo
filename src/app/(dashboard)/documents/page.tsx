@@ -147,22 +147,22 @@ export default async function CompliancePage({
       <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <XCircle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{counts.expired}</span>
+          <span className="text-lg font-bold text-red-500 tabular-nums">{counts.expired}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Expired</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
-          <AlertTriangle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{counts.critical}</span>
+          <AlertTriangle className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+          <span className="text-lg font-bold text-orange-500 tabular-nums">{counts.critical}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Critical</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
-          <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{counts.warning}</span>
+          <Clock className="h-3.5 w-3.5 text-yellow-500 shrink-0" />
+          <span className="text-lg font-bold text-yellow-500 tabular-nums">{counts.warning}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Warning</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
-          <CheckCircle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{counts.ok}</span>
+          <CheckCircle className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{counts.ok}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Valid</span>
         </div>
       </div>
@@ -202,11 +202,11 @@ export default async function CompliancePage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-4 py-3 font-medium">Operative</th>
-                <th className="text-left px-4 py-3 font-medium">Document</th>
-                <th className="text-left px-4 py-3 font-medium">Status</th>
-                <th className="text-left px-4 py-3 font-medium">Expiry</th>
-                <th className="text-left px-4 py-3 font-medium">Urgency</th>
+                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-2.5 font-medium">Document</th>
+                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Expiry</th>
+                <th className="text-left px-3 py-2.5 font-medium">Urgency</th>
               </tr>
             </thead>
             <tbody>
@@ -217,7 +217,7 @@ export default async function CompliancePage({
 
                 return (
                   <tr key={doc.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       {doc.operative ? (
                         <Link
                           href={`/operatives/${doc.operative.id}?tab=documents`}
@@ -239,7 +239,7 @@ export default async function CompliancePage({
                         )}
                       </div>
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       <Link
                         href={`/operatives/${doc.operative?.id}/documents/${doc.id}`}
                         className="hover:underline text-primary flex items-center gap-1.5"
@@ -252,15 +252,15 @@ export default async function CompliancePage({
                           : DOC_TYPE_LABELS[doc.document_type] ?? doc.document_type}
                       </Link>
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       <StatusBadge status={doc.status ?? 'pending'} />
                     </td>
-                    <td className="px-4 py-3 tabular-nums text-sm">
+                    <td className="px-3 py-2.5 tabular-nums text-sm">
                       {doc.expiry_date
                         ? new Date(doc.expiry_date).toLocaleDateString('en-GB')
                         : <span className="text-muted-foreground">—</span>}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       <span className={`inline-flex items-center gap-1 text-xs font-medium ${cfg.colour}`}>
                         <UrgIcon className="h-3.5 w-3.5" />
                         {cfg.label}

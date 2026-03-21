@@ -104,17 +104,17 @@ export default async function TimesheetsPage({
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Edit className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{draftCount ?? 0}</span>
+          <span className="text-lg font-bold text-muted-foreground tabular-nums">{draftCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Draft</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{pendingCount ?? 0}</span>
+          <span className="text-lg font-bold text-amber-400 tabular-nums">{pendingCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Pending Approval</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{approvedCount ?? 0}</span>
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{approvedCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Approved</span>
         </div>
       </div>
@@ -145,12 +145,13 @@ export default async function TimesheetsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-4 py-3 font-medium">Operative</th>
-                <th className="text-left px-4 py-3 font-medium">Week</th>
-                <th className="text-left px-4 py-3 font-medium">Days</th>
-                <th className="text-left px-4 py-3 font-medium">Hours</th>
-                <th className="text-left px-4 py-3 font-medium">Gross Pay</th>
-                <th className="text-left px-4 py-3 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-2.5 font-medium">Week</th>
+                <th className="text-left px-3 py-2.5 font-medium">Day Rate</th>
+                <th className="text-left px-3 py-2.5 font-medium">Days</th>
+                <th className="text-left px-3 py-2.5 font-medium">Hours</th>
+                <th className="text-left px-3 py-2.5 font-medium">Gross Pay</th>
+                <th className="text-left px-3 py-2.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -165,7 +166,7 @@ export default async function TimesheetsPage({
                 operative: { id: string; first_name: string; last_name: string; reference_number: string | null } | null
               }>).map((ts) => (
                 <tr key={ts.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <Link href={`/timesheets/${ts.id}`} className="font-medium hover:underline">
                       {ts.operative ? `${ts.operative.first_name} ${ts.operative.last_name}` : '—'}
                     </Link>
@@ -173,15 +174,18 @@ export default async function TimesheetsPage({
                       <div className="text-xs text-muted-foreground font-mono">{ts.operative.reference_number}</div>
                     )}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     w/c {new Date(ts.week_start).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </td>
-                  <td className="px-4 py-3 tabular-nums">{ts.total_days ?? 0}</td>
-                  <td className="px-4 py-3 tabular-nums">{ts.total_hours != null ? Number(ts.total_hours).toFixed(1) : '0.0'}</td>
-                  <td className="px-4 py-3 tabular-nums font-medium">
+                  <td className="px-3 py-2.5 tabular-nums text-muted-foreground">
+                    {ts.day_rate_used ? `£${Number(ts.day_rate_used).toFixed(0)}` : '—'}
+                  </td>
+                  <td className="px-3 py-2.5 tabular-nums">{ts.total_days ?? 0}</td>
+                  <td className="px-3 py-2.5 tabular-nums">{ts.total_hours != null ? Number(ts.total_hours).toFixed(1) : '0.0'}</td>
+                  <td className="px-3 py-2.5 tabular-nums font-medium">
                     {ts.gross_pay != null ? `£${Number(ts.gross_pay).toFixed(2)}` : '—'}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <StatusBadge status={ts.status ?? 'draft'} />
                   </td>
                 </tr>

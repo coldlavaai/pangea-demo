@@ -72,17 +72,17 @@ export default async function AdvertsPage() {
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Eye className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{stats.impressions.toLocaleString()}</span>
+          <span className="text-lg font-bold text-muted-foreground tabular-nums">{stats.impressions.toLocaleString()}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Impressions</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <MousePointer className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{stats.clicks.toLocaleString()}</span>
+          <span className="text-lg font-bold text-muted-foreground tabular-nums">{stats.clicks.toLocaleString()}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Clicks</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <Users className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{stats.applications.toLocaleString()}</span>
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{stats.applications.toLocaleString()}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Applications</span>
         </div>
       </div>
@@ -108,12 +108,12 @@ export default async function AdvertsPage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border bg-background/80">
-                    <th className="text-left px-4 py-3 text-muted-foreground font-medium">Platform</th>
-                    <th className="text-left px-4 py-3 text-muted-foreground font-medium">Status</th>
-                    <th className="text-right px-4 py-3 text-muted-foreground font-medium">Impr.</th>
-                    <th className="text-right px-4 py-3 text-muted-foreground font-medium">Clicks</th>
-                    <th className="text-right px-4 py-3 text-muted-foreground font-medium">Apps</th>
-                    <th className="text-right px-4 py-3 text-muted-foreground font-medium">Budget</th>
+                    <th className="text-left px-3 py-2.5 text-muted-foreground font-medium">Platform</th>
+                    <th className="text-left px-3 py-2.5 text-muted-foreground font-medium">Status</th>
+                    <th className="text-right px-3 py-2.5 text-muted-foreground font-medium">Impr.</th>
+                    <th className="text-right px-3 py-2.5 text-muted-foreground font-medium">Clicks</th>
+                    <th className="text-right px-3 py-2.5 text-muted-foreground font-medium">Apps</th>
+                    <th className="text-right px-3 py-2.5 text-muted-foreground font-medium">Budget</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
@@ -121,7 +121,7 @@ export default async function AdvertsPage() {
                     STATUS_ORDER.indexOf(a.status ?? 'draft') - STATUS_ORDER.indexOf(b.status ?? 'draft')
                   ).map((ad) => (
                     <tr key={ad.id} className="hover:bg-background/50">
-                      <td className="px-4 py-3">
+                      <td className="px-3 py-2.5">
                         <Link href={`/adverts/${ad.id}`} className="text-forest-400 hover:underline font-medium">
                           {PLATFORM_LABELS[ad.platform] ?? ad.platform}
                         </Link>
@@ -136,19 +136,19 @@ export default async function AdvertsPage() {
                           </a>
                         )}
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-3 py-2.5">
                         <StatusBadge status={ad.status ?? 'draft'} />
                       </td>
-                      <td className="px-4 py-3 text-right tabular-nums text-muted-foreground">
+                      <td className="px-3 py-2.5 text-right tabular-nums text-muted-foreground">
                         {(ad.impressions ?? 0).toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 text-right tabular-nums text-muted-foreground">
+                      <td className="px-3 py-2.5 text-right tabular-nums text-muted-foreground">
                         {(ad.clicks ?? 0).toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 text-right tabular-nums text-muted-foreground font-medium">
+                      <td className="px-3 py-2.5 text-right tabular-nums text-muted-foreground font-medium">
                         {(ad.applications ?? 0).toLocaleString()}
                       </td>
-                      <td className="px-4 py-3 text-right tabular-nums text-muted-foreground">
+                      <td className="px-3 py-2.5 text-right tabular-nums text-muted-foreground">
                         {ad.budget != null ? `£${Number(ad.budget).toFixed(0)}` : '—'}
                       </td>
                     </tr>

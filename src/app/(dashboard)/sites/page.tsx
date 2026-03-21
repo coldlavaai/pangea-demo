@@ -80,12 +80,12 @@ export default async function SitesPage({
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{activeCount ?? 0}</span>
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{activeCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Active</span>
         </div>
         <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
           <XCircle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-          <span className="text-lg font-bold text-foreground tabular-nums">{inactiveCount ?? 0}</span>
+          <span className="text-lg font-bold text-muted-foreground tabular-nums">{inactiveCount ?? 0}</span>
           <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Inactive</span>
         </div>
       </div>
@@ -115,12 +115,12 @@ export default async function SitesPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-4 py-3 font-medium">Site</th>
-                <th className="text-left px-4 py-3 font-medium">Location</th>
-                <th className="text-left px-4 py-3 font-medium">Manager</th>
-                <th className="text-left px-4 py-3 font-medium">Project Value</th>
-                <th className="text-left px-4 py-3 font-medium">Dates</th>
-                <th className="text-left px-4 py-3 font-medium">Status</th>
+                <th className="text-left px-3 py-2.5 font-medium">Site</th>
+                <th className="text-left px-3 py-2.5 font-medium">Location</th>
+                <th className="text-left px-3 py-2.5 font-medium">Manager</th>
+                <th className="text-left px-3 py-2.5 font-medium">Project Value</th>
+                <th className="text-left px-3 py-2.5 font-medium">Dates</th>
+                <th className="text-left px-3 py-2.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -129,7 +129,7 @@ export default async function SitesPage({
                   key={site.id}
                   className="border-b last:border-0 hover:bg-muted/30 transition-colors"
                 >
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <Link
                       href={`/sites/${site.id}`}
                       className="font-medium hover:underline"
@@ -137,11 +137,11 @@ export default async function SitesPage({
                       {site.name}
                     </Link>
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground">
+                  <td className="px-3 py-2.5 text-muted-foreground">
                     <div>{site.address}</div>
                     <div className="text-xs font-mono">{site.postcode}</div>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     {site.site_manager_name ? (
                       <div>
                         <div>{site.site_manager_name}</div>
@@ -153,14 +153,14 @@ export default async function SitesPage({
                       <span className="text-muted-foreground">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5 tabular-nums">
                     {site.project_value != null ? (
                       <span>£{Number(site.project_value).toLocaleString()}</span>
                     ) : (
                       <span className="text-muted-foreground">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-xs text-muted-foreground">
+                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
                     {site.project_start_date && (
                       <div>{new Date(site.project_start_date).toLocaleDateString('en-GB')}</div>
                     )}
@@ -169,7 +169,7 @@ export default async function SitesPage({
                     )}
                     {!site.project_start_date && !site.project_end_date && '—'}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5">
                     <span
                       className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                         site.is_active

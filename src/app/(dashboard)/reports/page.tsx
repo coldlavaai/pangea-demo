@@ -259,36 +259,30 @@ export default async function ReportsPage() {
   }, {})
 
   return (
-    <div className="px-4 pt-2 pb-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Reports"
         description="Compliance, workforce and audit reports for ISO review"
       />
 
       {/* ── 1. COMPLIANCE SUMMARY ─────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Compliance Summary</h2>
-        <div className="grid grid-cols-3 gap-3">
-          <div className="rounded-xl border border-red-900/60 bg-red-950/20 p-4 flex items-start gap-3">
-            <ShieldX className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-2xl font-bold text-red-400">{blockedOps.length}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Operatives blocked</p>
-            </div>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <ShieldX className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className="text-lg font-bold text-red-500 tabular-nums">{blockedOps.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Blocked</span>
           </div>
-          <div className="rounded-xl border border-orange-900/60 bg-orange-950/20 p-4 flex items-start gap-3">
-            <ShieldAlert className="h-5 w-5 text-orange-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-2xl font-bold text-orange-400">{expiringSoon.length}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Expiring within 7 days</p>
-            </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <ShieldAlert className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <span className="text-lg font-bold text-amber-400 tabular-nums">{expiringSoon.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Expiring</span>
           </div>
-          <div className="rounded-xl border border-forest-900/60 bg-forest-950/20 p-4 flex items-start gap-3">
-            <ShieldCheck className="h-5 w-5 text-forest-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-2xl font-bold text-forest-400">{clearOps.length}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">All docs clear</p>
-            </div>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <ShieldCheck className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+            <span className="text-lg font-bold text-forest-400 tabular-nums">{clearOps.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Clear</span>
           </div>
         </div>
 
@@ -328,7 +322,7 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 2. EXPIRING DOCUMENTS ─────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
           Expiring Documents
           <span className="ml-2 font-normal text-muted-foreground normal-case">(next 90 days)</span>
@@ -377,26 +371,30 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 3. RIGHT TO WORK ──────────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Right to Work</h2>
 
         {/* RTW stats */}
-        <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-forest-400 tabular-nums">{rtwVerified.length}<span className="text-sm font-normal text-muted-foreground ml-1">/ {ops.length}</span></p>
-            <p className="text-xs text-muted-foreground mt-0.5">Verified ({rtwPct}%)</p>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <CheckCircle2 className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+            <span className="text-lg font-bold text-forest-400 tabular-nums">{rtwVerified.length}<span className="text-xs font-normal text-muted-foreground ml-1">/ {ops.length}</span></span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Verified ({rtwPct}%)</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${rtwUnverified.length > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{rtwUnverified.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Not verified</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${rtwUnverified.length > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{rtwUnverified.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Not Verified</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-sky-400 tabular-nums">{rtwTimeLimited.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Time-limited</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <Clock className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+            <span className="text-lg font-bold text-sky-400 tabular-nums">{rtwTimeLimited.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Time-Limited</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${rtwExpiring30.length > 0 ? 'text-orange-400' : 'text-muted-foreground'}`}>{rtwExpiring30.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Expiring ≤30 days</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-orange-400 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${rtwExpiring30.length > 0 ? 'text-orange-400' : 'text-muted-foreground'}`}>{rtwExpiring30.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Expiring 30d</span>
           </div>
         </div>
 
@@ -464,28 +462,32 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 4. CSCS COMPLIANCE ────────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-2">
           <HardHat className="h-4 w-4 text-amber-400" /> CSCS Compliance
         </h2>
 
         {/* CSCS summary stats */}
-        <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-forest-400 tabular-nums">{cscsHave.length}<span className="text-sm font-normal text-muted-foreground ml-1">/ {ops.length}</span></p>
-            <p className="text-xs text-muted-foreground mt-0.5">Hold CSCS ({cscsPct}%)</p>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <HardHat className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+            <span className="text-lg font-bold text-forest-400 tabular-nums">{cscsHave.length}<span className="text-xs font-normal text-muted-foreground ml-1">/ {ops.length}</span></span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Hold CSCS ({cscsPct}%)</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${cscsMissing.length > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{cscsMissing.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">No card recorded</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${cscsMissing.length > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{cscsMissing.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">No Card</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${cscsExpiring.length > 0 ? 'text-orange-400' : 'text-muted-foreground'}`}>{cscsExpiring.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Expiring ≤90 days</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${cscsExpiring.length > 0 ? 'text-amber-400' : 'text-muted-foreground'}`}>{cscsExpiring.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Expiring 90d</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${cscsExpired.length > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{cscsExpired.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Expired</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${cscsExpired.length > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{cscsExpired.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Expired</span>
           </div>
         </div>
 
@@ -560,29 +562,33 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 5. WORKING TIME DIRECTIVE ─────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-2">
           <Clock className="h-4 w-4 text-sky-400" /> Working Time Directive
           <span className="font-normal text-muted-foreground normal-case">({currentWeekStart} week)</span>
         </h2>
 
         {/* WTD summary stats */}
-        <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-muted-foreground tabular-nums">{currentWeekSheets.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Timesheets this week</p>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+            <span className="text-lg font-bold text-foreground tabular-nums">{currentWeekSheets.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Timesheets</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${wtdOver48.length > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{wtdOver48.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Over 48h this week</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${wtdOver48.length > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{wtdOver48.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Over 48h</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${wtdWarn.length > 0 ? 'text-amber-400' : 'text-muted-foreground'}`}>{wtdWarn.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">40–48h (approaching)</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${wtdWarn.length > 0 ? 'text-amber-400' : 'text-muted-foreground'}`}>{wtdWarn.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">40-48h</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${wtdShifts.length > 0 ? 'text-orange-400' : 'text-muted-foreground'}`}>{wtdShifts.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Shift violations (28d)</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-orange-400 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${wtdShifts.length > 0 ? 'text-orange-400' : 'text-muted-foreground'}`}>{wtdShifts.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Violations</span>
           </div>
         </div>
 
@@ -694,16 +700,16 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 6. WORKFORCE STATUS ───────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
           Workforce Status
           <span className="ml-2 font-normal text-muted-foreground normal-case">({ops.length} operatives)</span>
         </h2>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
           {Object.entries(statusCounts).sort((a, b) => b[1] - a[1]).map(([status, count]) => (
-            <div key={status} className="rounded-xl border border-border/50 bg-card/40 p-4">
-              <p className={`text-2xl font-bold tabular-nums ${STATUS_COLOURS[status] ?? 'text-muted-foreground'}`}>{count}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">{STATUS_LABELS[status] ?? status}</p>
+            <div key={status} className="flex items-center gap-2.5 px-4 py-2 flex-1">
+              <span className={`text-lg font-bold tabular-nums ${STATUS_COLOURS[status] ?? 'text-muted-foreground'}`}>{count}</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wide">{STATUS_LABELS[status] ?? status}</span>
             </div>
           ))}
         </div>
@@ -751,27 +757,31 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── NCR SUMMARY ───────────────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-2">
           <AlertTriangle className="h-4 w-4 text-orange-400" /> Non-Conformance Incidents
           <span className="font-normal text-muted-foreground normal-case">({ncrList.length} total)</span>
         </h2>
-        <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-muted-foreground tabular-nums">{ncrList.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Total NCRs</p>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+            <span className="text-lg font-bold text-foreground tabular-nums">{ncrList.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${ncrUnresolved.length > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{ncrUnresolved.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Unresolved</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${ncrUnresolved.length > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{ncrUnresolved.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Unresolved</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className={`text-2xl font-bold tabular-nums ${(ncrBySeverity['critical'] ?? 0) > 0 ? 'text-red-400' : 'text-muted-foreground'}`}>{ncrBySeverity['critical'] ?? 0}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Critical severity</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <ShieldAlert className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className={`text-lg font-bold tabular-nums ${(ncrBySeverity['critical'] ?? 0) > 0 ? 'text-red-500' : 'text-muted-foreground'}`}>{ncrBySeverity['critical'] ?? 0}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Critical</span>
           </div>
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-muted-foreground tabular-nums">{ncrList.length - ncrUnresolved.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Resolved</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <CheckCircle2 className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+            <span className="text-lg font-bold text-forest-400 tabular-nums">{ncrList.length - ncrUnresolved.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Resolved</span>
           </div>
         </div>
 
@@ -832,27 +842,31 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── RAP PERFORMANCE ───────────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-2">
           <Star className="h-4 w-4 text-amber-400" /> RAP Performance
           <span className="font-normal text-muted-foreground normal-case">({reviewList.length} reviews)</span>
         </h2>
-        <div className="grid grid-cols-4 gap-3">
-          <div className="rounded-xl border border-border/50 bg-card/40 p-3">
-            <p className="text-2xl font-bold text-muted-foreground tabular-nums">{reviewList.length}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Total reviews</p>
+        <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <Star className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+            <span className="text-lg font-bold text-foreground tabular-nums">{reviewList.length}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</span>
           </div>
-          <div className="rounded-xl border border-forest-900/60 bg-forest-950/20 p-3">
-            <p className="text-2xl font-bold text-forest-400 tabular-nums">{rapTrafficCounts['green'] ?? 0}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Green</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <CheckCircle2 className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+            <span className="text-lg font-bold text-forest-400 tabular-nums">{rapTrafficCounts['green'] ?? 0}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Green</span>
           </div>
-          <div className="rounded-xl border border-amber-900/60 bg-amber-950/20 p-3">
-            <p className="text-2xl font-bold text-amber-400 tabular-nums">{rapTrafficCounts['amber'] ?? 0}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Amber</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <AlertTriangle className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <span className="text-lg font-bold text-amber-400 tabular-nums">{rapTrafficCounts['amber'] ?? 0}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Amber</span>
           </div>
-          <div className="rounded-xl border border-red-900/60 bg-red-950/20 p-3">
-            <p className="text-2xl font-bold text-red-400 tabular-nums">{rapTrafficCounts['red'] ?? 0}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Red</p>
+          <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+            <XCircle className="h-3.5 w-3.5 text-red-500 shrink-0" />
+            <span className="text-lg font-bold text-red-500 tabular-nums">{rapTrafficCounts['red'] ?? 0}</span>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Red</span>
           </div>
         </div>
 
@@ -905,7 +919,7 @@ export default async function ReportsPage() {
       </section>
 
       {/* ── 6. ALLOCATION HISTORY ─────────────────────────────────────────── */}
-      <section className="space-y-3">
+      <section className="space-y-2">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
             Allocation History
