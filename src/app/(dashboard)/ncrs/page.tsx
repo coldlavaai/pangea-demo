@@ -209,13 +209,13 @@ export default async function NcrsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Ref</th>
-                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
-                <th className="text-left px-3 py-2.5 font-medium">Site</th>
-                <th className="text-left px-3 py-2.5 font-medium">Type</th>
-                <th className="text-left px-3 py-2.5 font-medium">Severity</th>
-                <th className="text-left px-3 py-2.5 font-medium">Date</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Ref</th>
+                <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-1.5 font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 font-medium">Type</th>
+                <th className="text-left px-3 py-1.5 font-medium">Severity</th>
+                <th className="text-left px-3 py-1.5 font-medium">Date</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
                 <th className="w-8" />
               </tr>
             </thead>
@@ -233,12 +233,12 @@ export default async function NcrsPage({
                 site: { id: string; name: string } | null
               }>).map((n) => (
                 <tr key={n.id} className={`border-b last:border-0 hover:bg-muted/30 transition-colors border-l-4 ${SEVERITY_ROW_BORDER[n.severity] ?? 'border-l-transparent'}`}>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <Link href={`/ncrs/${n.id}`} className="font-mono text-xs hover:underline text-muted-foreground">
                       {n.reference_number ?? n.id.slice(0, 8).toUpperCase()}
                     </Link>
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     {n.operative ? (
                       <Link href={`/operatives/${n.operative.id}`} className="font-medium hover:underline">
                         {n.operative.first_name} {n.operative.last_name}
@@ -248,29 +248,29 @@ export default async function NcrsPage({
                       <span className="ml-2 text-xs bg-red-500/10 text-red-600 border border-red-500/20 rounded px-1">BLOCKED</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground text-xs">
+                  <td className="px-3 py-1.5 text-muted-foreground text-xs">
                     {n.site?.name ?? '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-sm">
+                  <td className="px-3 py-1.5 text-sm">
                     {NCR_TYPE_LABELS[n.incident_type] ?? n.incident_type}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <span className={`text-xs font-medium px-2 py-0.5 rounded border capitalize ${SEVERITY_CLASSES[n.severity] ?? ''}`}>
                       {n.severity}
                     </span>
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground text-xs">
+                  <td className="px-3 py-1.5 text-muted-foreground text-xs">
                     {new Date(n.incident_date).toLocaleDateString('en-GB')}
                     {n.incident_time && <span className="ml-1 text-muted-foreground/70">{n.incident_time}</span>}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     {n.resolved ? (
                       <span className="text-xs text-green-600 font-medium">Resolved</span>
                     ) : (
                       <span className="text-xs text-orange-500 font-medium">Open</span>
                     )}
                   </td>
-                  <td className="px-2 py-2.5">
+                  <td className="px-2 py-1.5">
                     <Link href={`/ncrs/${n.id}`} className="text-muted-foreground/50 hover:text-foreground">
                       <ViewIcon className="h-4 w-4" />
                     </Link>
@@ -281,7 +281,7 @@ export default async function NcrsPage({
           </table>
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-between px-3 py-2.5 border-t bg-muted/20">
+            <div className="flex items-center justify-between px-3 py-1.5 border-t bg-muted/20">
               <span className="text-xs text-muted-foreground">
                 {offset + 1}–{Math.min(offset + PAGE_SIZE, filteredCount ?? 0)} of {filteredCount}
               </span>

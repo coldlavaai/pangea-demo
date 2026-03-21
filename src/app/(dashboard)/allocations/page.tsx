@@ -131,14 +131,14 @@ export default async function AllocationsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
-                <th className="text-left px-3 py-2.5 font-medium">Phone</th>
-                <th className="text-left px-3 py-2.5 font-medium">Site</th>
-                <th className="text-left px-3 py-2.5 font-medium">Request</th>
-                <th className="text-left px-3 py-2.5 font-medium">Dates</th>
-                <th className="text-left px-3 py-2.5 font-medium">Day Rate</th>
-                <th className="text-left px-3 py-2.5 font-medium">Offer Sent</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-1.5 font-medium">Phone</th>
+                <th className="text-left px-3 py-1.5 font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 font-medium">Request</th>
+                <th className="text-left px-3 py-1.5 font-medium">Dates</th>
+                <th className="text-left px-3 py-1.5 font-medium">Day Rate</th>
+                <th className="text-left px-3 py-1.5 font-medium">Offer Sent</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -155,38 +155,38 @@ export default async function AllocationsPage({
                 labour_request: { id: string } | null
               }>).map((a) => (
                 <tr key={a.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <Link href={`/allocations/${a.id}`} className="font-medium hover:underline">
                       {a.operative ? `${a.operative.first_name} ${a.operative.last_name}` : '—'}
                     </Link>
                     {a.operative?.reference_number && (
-                      <div className="text-xs text-muted-foreground font-mono">{a.operative.reference_number}</div>
+                      <span className="ml-1.5 text-[10px] text-muted-foreground font-mono">{a.operative.reference_number}</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground text-xs font-mono tabular-nums">
+                  <td className="px-3 py-1.5 text-muted-foreground text-xs font-mono tabular-nums">
                     {a.operative?.phone ?? '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {a.site ? (
                       <Link href={`/sites/${a.site.id}`} className="hover:underline">{a.site.name}</Link>
                     ) : '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {a.labour_request ? (
                       <Link href={`/requests/${a.labour_request.id}`} className="text-forest-400 hover:underline text-xs font-medium">View</Link>
                     ) : '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                  <td className="px-3 py-1.5 text-muted-foreground tabular-nums">
                     {new Date(a.start_date).toLocaleDateString('en-GB')}
                     {a.end_date && ` → ${new Date(a.end_date).toLocaleDateString('en-GB')}`}
                   </td>
-                  <td className="px-3 py-2.5 tabular-nums">
+                  <td className="px-3 py-1.5 tabular-nums">
                     {a.agreed_day_rate != null ? `£${Number(a.agreed_day_rate).toFixed(2)}` : '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground text-xs tabular-nums">
+                  <td className="px-3 py-1.5 text-muted-foreground text-xs tabular-nums">
                     {a.offer_sent_at ? new Date(a.offer_sent_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—'}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <StatusBadge status={a.status ?? 'pending'} />
                   </td>
                 </tr>

@@ -196,10 +196,10 @@ export default async function RequestDetailPage({
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b bg-muted/40">
-                    <th className="text-left px-4 py-3 font-medium">Operative</th>
-                    <th className="text-left px-4 py-3 font-medium">Dates</th>
-                    <th className="text-left px-4 py-3 font-medium">Day Rate</th>
-                    <th className="text-left px-4 py-3 font-medium">Status</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Dates</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Day Rate</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -212,7 +212,7 @@ export default async function RequestDetailPage({
                     operative: { id: string; first_name: string; last_name: string; reference_number: string | null; phone: string | null } | null
                   }>).map((alloc) => (
                     <tr key={alloc.id} className="border-b last:border-0 hover:bg-muted/30">
-                      <td className="px-4 py-3">
+                      <td className="px-3 py-1.5">
                         {alloc.operative ? (
                           <div>
                             <Link
@@ -230,14 +230,14 @@ export default async function RequestDetailPage({
                           </div>
                         ) : '—'}
                       </td>
-                      <td className="px-4 py-3 text-muted-foreground">
+                      <td className="px-3 py-1.5 text-muted-foreground">
                         {new Date(alloc.start_date).toLocaleDateString('en-GB')}
                         {alloc.end_date && ` → ${new Date(alloc.end_date).toLocaleDateString('en-GB')}`}
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-3 py-1.5">
                         {alloc.agreed_day_rate != null ? `£${Number(alloc.agreed_day_rate).toFixed(2)}` : '—'}
                       </td>
-                      <td className="px-4 py-3">
+                      <td className="px-3 py-1.5">
                         <StatusBadge status={alloc.status ?? 'pending'} />
                       </td>
                     </tr>

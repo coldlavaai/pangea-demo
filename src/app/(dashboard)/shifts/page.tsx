@@ -133,14 +133,14 @@ export default async function ShiftsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
-                <th className="text-left px-3 py-2.5 font-medium">Site</th>
-                <th className="text-left px-3 py-2.5 font-medium">Scheduled</th>
-                <th className="text-left px-3 py-2.5 font-medium">Actual</th>
-                <th className="text-left px-3 py-2.5 font-medium">Break</th>
-                <th className="text-left px-3 py-2.5 font-medium">Hours</th>
-                <th className="text-left px-3 py-2.5 font-medium">Flags</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-1.5 font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 font-medium">Scheduled</th>
+                <th className="text-left px-3 py-1.5 font-medium">Actual</th>
+                <th className="text-left px-3 py-1.5 font-medium">Break</th>
+                <th className="text-left px-3 py-1.5 font-medium">Hours</th>
+                <th className="text-left px-3 py-1.5 font-medium">Flags</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -159,36 +159,32 @@ export default async function ShiftsPage({
                 site: { id: string; name: string } | null
               }>).map((shift) => (
                 <tr key={shift.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <Link href={`/shifts/${shift.id}`} className="font-medium hover:underline">
                       {shift.operative ? `${shift.operative.first_name} ${shift.operative.last_name}` : '—'}
                     </Link>
                     {shift.operative?.reference_number && (
-                      <div className="text-xs text-muted-foreground font-mono">{shift.operative.reference_number}</div>
+                      <span className="ml-1.5 text-[10px] text-muted-foreground font-mono">{shift.operative.reference_number}</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {shift.site ? <Link href={`/sites/${shift.site.id}`} className="hover:underline">{shift.site.name}</Link> : '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
-                    <div>{fmtDateTime(shift.scheduled_start)}</div>
-                    <div>→ {fmtDateTime(shift.scheduled_end)}</div>
+                  <td className="px-3 py-1.5 text-xs text-muted-foreground">
+                    {fmtDateTime(shift.scheduled_start)} → {fmtDateTime(shift.scheduled_end)}
                   </td>
-                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
+                  <td className="px-3 py-1.5 text-xs text-muted-foreground">
                     {shift.actual_start && shift.actual_end ? (
-                      <>
-                        <div>{fmtDateTime(shift.actual_start)}</div>
-                        <div>→ {fmtDateTime(shift.actual_end)}</div>
-                      </>
+                      <>{fmtDateTime(shift.actual_start)} → {fmtDateTime(shift.actual_end)}</>
                     ) : '—'}
                   </td>
-                  <td className="px-3 py-2.5 tabular-nums text-muted-foreground">{shift.break_minutes ?? 0}m</td>
-                  <td className="px-3 py-2.5 tabular-nums font-medium">
+                  <td className="px-3 py-1.5 tabular-nums text-muted-foreground">{shift.break_minutes ?? 0}m</td>
+                  <td className="px-3 py-1.5 tabular-nums font-medium">
                     {shift.actual_start && shift.actual_end
                       ? ((new Date(shift.actual_end).getTime() - new Date(shift.actual_start).getTime()) / 3600000 - (shift.break_minutes ?? 0) / 60).toFixed(1)
                       : '—'}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <div className="flex flex-wrap gap-1">
                       {shift.wtd_overnight_flag && (
                         <span className="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-1.5 py-0.5 rounded">Overnight</span>
@@ -201,7 +197,7 @@ export default async function ShiftsPage({
                       )}
                     </div>
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <StatusBadge status={shift.status ?? 'scheduled'} />
                   </td>
                 </tr>

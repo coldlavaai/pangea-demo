@@ -722,10 +722,10 @@ function DocumentsTab({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-background/80">
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Type</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">File</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Status</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Expiry</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Type</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">File</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Expiry</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -733,7 +733,7 @@ function DocumentsTab({
                 const expired = doc.expiry_date && doc.expiry_date < today
                 return (
                   <tr key={doc.id} className="hover:bg-background/50">
-                    <td className="px-4 py-3 text-muted-foreground">
+                    <td className="px-3 py-1.5 text-muted-foreground">
                       <Link
                         href={`/operatives/${operativeId}/documents/${doc.id}`}
                         className="hover:underline text-forest-400"
@@ -741,7 +741,7 @@ function DocumentsTab({
                         {DOC_TYPE_LABELS[doc.document_type] ?? doc.document_type}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">
+                    <td className="px-3 py-1.5 text-muted-foreground">
                       {doc.file_name ? (
                         <Link
                           href={`/operatives/${operativeId}/documents/${doc.id}`}
@@ -753,12 +753,12 @@ function DocumentsTab({
                         <span className="text-muted-foreground">—</span>
                       )}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-1.5">
                       {doc.status ? <StatusBadge status={doc.status} /> : '—'}
                     </td>
                     <td
                       className={cn(
-                        'px-4 py-3 tabular-nums',
+                        'px-3 py-1.5 tabular-nums',
                         expired ? 'text-red-400' : 'text-muted-foreground'
                       )}
                     >
@@ -800,12 +800,12 @@ function AllocationsTab({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-background/80">
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Site</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Start</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">End</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Status</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Rate</th>
-                <th className="px-4 py-3" />
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Start</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">End</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Rate</th>
+                <th className="px-3 py-1.5" />
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -813,22 +813,22 @@ function AllocationsTab({
                 const canTerminate = ['pending', 'confirmed', 'active'].includes(a.status ?? '')
                 return (
                 <tr key={a.id} className="hover:bg-background/50">
-                  <td className="px-4 py-3 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {a.site?.name ?? '—'}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground tabular-nums whitespace-nowrap">
+                  <td className="px-3 py-1.5 text-muted-foreground tabular-nums whitespace-nowrap">
                     {fmtDate(a.start_date)}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground tabular-nums whitespace-nowrap">
+                  <td className="px-3 py-1.5 text-muted-foreground tabular-nums whitespace-nowrap">
                     {fmtDate(a.end_date)}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-1.5">
                     {a.status ? <StatusBadge status={a.status} /> : '—'}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground tabular-nums">
+                  <td className="px-3 py-1.5 text-muted-foreground tabular-nums">
                     {a.agreed_day_rate != null ? `£${a.agreed_day_rate}/d` : '—'}
                   </td>
-                  <td className="px-4 py-3 text-right">
+                  <td className="px-3 py-1.5 text-right">
                     {canTerminate && (
                       <TerminateAllocationButton
                         allocationId={a.id}
@@ -914,11 +914,11 @@ function RapTab({
               <tr className="border-b bg-muted/40">
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Date</th>
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Allocation / Site</th>
-                <th className="text-center px-3 py-2.5 font-medium text-xs">R</th>
-                <th className="text-center px-3 py-2.5 font-medium text-xs">A</th>
-                <th className="text-center px-3 py-2.5 font-medium text-xs">P</th>
-                <th className="text-center px-3 py-2.5 font-medium text-xs">S</th>
-                <th className="text-center px-3 py-2.5 font-medium text-xs">Avg</th>
+                <th className="text-center px-3 py-1.5 font-medium text-xs">R</th>
+                <th className="text-center px-3 py-1.5 font-medium text-xs">A</th>
+                <th className="text-center px-3 py-1.5 font-medium text-xs">P</th>
+                <th className="text-center px-3 py-1.5 font-medium text-xs">S</th>
+                <th className="text-center px-3 py-1.5 font-medium text-xs">Avg</th>
                 <th className="text-left px-4 py-2.5 font-medium text-xs">Notes</th>
               </tr>
             </thead>
@@ -931,11 +931,11 @@ function RapTab({
                   <td className="px-4 py-2.5 text-xs text-muted-foreground">
                     {(r.allocation as { id: string; site: { name: string } | null } | null)?.site?.name ?? '—'}
                   </td>
-                  <td className="px-3 py-2.5 text-center tabular-nums">{r.reliability_score}/5</td>
-                  <td className="px-3 py-2.5 text-center tabular-nums">{r.attitude_score}/5</td>
-                  <td className="px-3 py-2.5 text-center tabular-nums">{r.performance_score}/5</td>
-                  <td className="px-3 py-2.5 text-center tabular-nums text-muted-foreground">{(r as Record<string, unknown>).safety_score != null ? `${(r as Record<string, unknown>).safety_score}/5` : '—'}</td>
-                  <td className="px-3 py-2.5 text-center">
+                  <td className="px-3 py-1.5 text-center tabular-nums">{r.reliability_score}/5</td>
+                  <td className="px-3 py-1.5 text-center tabular-nums">{r.attitude_score}/5</td>
+                  <td className="px-3 py-1.5 text-center tabular-nums">{r.performance_score}/5</td>
+                  <td className="px-3 py-1.5 text-center tabular-nums text-muted-foreground">{(r as Record<string, unknown>).safety_score != null ? `${(r as Record<string, unknown>).safety_score}/5` : '—'}</td>
+                  <td className="px-3 py-1.5 text-center">
                     <span className={cn(
                       'inline-flex items-center gap-1 text-xs font-semibold',
                       r.traffic_light === 'green' ? 'text-forest-400' : r.traffic_light === 'amber' ? 'text-amber-400' : 'text-red-400'
@@ -979,37 +979,37 @@ function NcrsTab({ ncrs }: { ncrs: NcrRow[] }) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-background/80">
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Ref</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Type</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Severity</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Date</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Site</th>
-                <th className="text-left px-4 py-3 text-muted-foreground font-medium">Resolved</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Ref</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Type</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Severity</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Date</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 text-muted-foreground font-medium">Resolved</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {ncrs.map((n) => (
                 <tr key={n.id} className="hover:bg-background/50">
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-1.5">
                     <span className="font-mono text-xs text-muted-foreground">
                       {n.reference_number ?? '—'}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {NCR_TYPE_LABELS[n.incident_type] ?? n.incident_type}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-1.5">
                     <span className={cn('capitalize', SEV_COLOUR[n.severity] ?? 'text-muted-foreground')}>
                       {n.severity}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground tabular-nums whitespace-nowrap">
+                  <td className="px-3 py-1.5 text-muted-foreground tabular-nums whitespace-nowrap">
                     {fmtDate(n.incident_date)}
                   </td>
-                  <td className="px-4 py-3 text-muted-foreground">
+                  <td className="px-3 py-1.5 text-muted-foreground">
                     {n.site?.name ?? '—'}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-1.5">
                     {n.resolved ? (
                       <CheckCircle2 className="h-4 w-4 text-forest-500" />
                     ) : (

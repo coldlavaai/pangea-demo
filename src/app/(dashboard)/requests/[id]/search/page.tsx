@@ -178,7 +178,7 @@ export default async function LabourPoolSearchPage({
 
       {/* Reallocation-first banner (GAP-053) */}
       {hasReallocationCandidates && (
-        <div className="rounded-lg border border-orange-300 bg-orange-50 dark:bg-orange-950 dark:border-orange-800 px-4 py-3 flex items-start gap-3">
+        <div className="rounded-lg border border-orange-300 bg-orange-50 dark:bg-orange-950 dark:border-orange-800 px-3 py-1.5 flex items-start gap-3">
           <AlertTriangle className="h-5 w-5 text-orange-500 shrink-0 mt-0.5" />
           <div className="text-sm">
             <p className="font-medium text-orange-800 dark:text-orange-300">Reallocation candidates available</p>

@@ -87,11 +87,11 @@ export default async function TimesheetDetailPage({
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b bg-muted/40">
-                    <th className="text-left px-4 py-3 font-medium">Date</th>
-                    <th className="text-right px-4 py-3 font-medium">Hours</th>
-                    <th className="text-right px-4 py-3 font-medium">Overtime</th>
-                    <th className="text-right px-4 py-3 font-medium">Day Rate</th>
-                    <th className="text-left px-4 py-3 font-medium">Notes</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Date</th>
+                    <th className="text-right px-3 py-1.5 font-medium">Hours</th>
+                    <th className="text-right px-3 py-1.5 font-medium">Overtime</th>
+                    <th className="text-right px-3 py-1.5 font-medium">Day Rate</th>
+                    <th className="text-left px-3 py-1.5 font-medium">Notes</th>
                   </tr>
                 </thead>
                 <tbody>

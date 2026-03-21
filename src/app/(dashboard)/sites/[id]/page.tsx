@@ -292,16 +292,16 @@ function AllocationsTab({ allocations }: { allocations: Allocation[] }) {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b bg-muted/40">
-            <th className="text-left px-4 py-3 font-medium">Operative</th>
-            <th className="text-left px-4 py-3 font-medium">Dates</th>
-            <th className="text-left px-4 py-3 font-medium">Day Rate</th>
-            <th className="text-left px-4 py-3 font-medium">Status</th>
+            <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+            <th className="text-left px-3 py-1.5 font-medium">Dates</th>
+            <th className="text-left px-3 py-1.5 font-medium">Day Rate</th>
+            <th className="text-left px-3 py-1.5 font-medium">Status</th>
           </tr>
         </thead>
         <tbody>
           {allocations.map((a) => (
             <tr key={a.id} className="border-b last:border-0 hover:bg-muted/30">
-              <td className="px-4 py-3">
+              <td className="px-3 py-1.5">
                 {a.operative ? (
                   <div>
                     <div className="font-medium">{a.operative.first_name} {a.operative.last_name}</div>
@@ -311,14 +311,14 @@ function AllocationsTab({ allocations }: { allocations: Allocation[] }) {
                   </div>
                 ) : '—'}
               </td>
-              <td className="px-4 py-3 text-muted-foreground">
+              <td className="px-3 py-1.5 text-muted-foreground">
                 {new Date(a.start_date).toLocaleDateString('en-GB')}
                 {a.end_date && ` → ${new Date(a.end_date).toLocaleDateString('en-GB')}`}
               </td>
-              <td className="px-4 py-3">
+              <td className="px-3 py-1.5">
                 {a.agreed_day_rate != null ? `£${Number(a.agreed_day_rate).toFixed(2)}` : '—'}
               </td>
-              <td className="px-4 py-3">
+              <td className="px-3 py-1.5">
                 <StatusBadge status={a.status ?? 'pending'} />
               </td>
             </tr>

@@ -98,7 +98,7 @@ export default async function NcrDetailPage({
 
       {/* Auto-block alert */}
       {ncr.auto_blocked && (
-        <div className="flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600">
+        <div className="flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm text-red-600">
           <AlertTriangle className="h-4 w-4 shrink-0" />
           <span>
             This operative was <strong>automatically blocked</strong> due to reaching the NCR threshold.
@@ -107,7 +107,7 @@ export default async function NcrDetailPage({
       )}
 
       {/* Status banner */}
-      <div className={`flex items-center gap-3 rounded-lg border-l-4 border px-4 py-3 ${
+      <div className={`flex items-center gap-3 rounded-lg border-l-4 border px-3 py-1.5 ${
         ncr.resolved
           ? 'border-green-500/20 bg-green-500/5 border-l-green-500'
           : `border-orange-500/20 bg-orange-500/5 ${SEVERITY_HEADER_BORDER[ncr.severity] ?? 'border-l-orange-400'}`

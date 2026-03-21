@@ -145,13 +145,13 @@ export default async function TimesheetsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Operative</th>
-                <th className="text-left px-3 py-2.5 font-medium">Week</th>
-                <th className="text-left px-3 py-2.5 font-medium">Day Rate</th>
-                <th className="text-left px-3 py-2.5 font-medium">Days</th>
-                <th className="text-left px-3 py-2.5 font-medium">Hours</th>
-                <th className="text-left px-3 py-2.5 font-medium">Gross Pay</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Operative</th>
+                <th className="text-left px-3 py-1.5 font-medium">Week</th>
+                <th className="text-left px-3 py-1.5 font-medium">Day Rate</th>
+                <th className="text-left px-3 py-1.5 font-medium">Days</th>
+                <th className="text-left px-3 py-1.5 font-medium">Hours</th>
+                <th className="text-left px-3 py-1.5 font-medium">Gross Pay</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -166,26 +166,26 @@ export default async function TimesheetsPage({
                 operative: { id: string; first_name: string; last_name: string; reference_number: string | null } | null
               }>).map((ts) => (
                 <tr key={ts.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <Link href={`/timesheets/${ts.id}`} className="font-medium hover:underline">
                       {ts.operative ? `${ts.operative.first_name} ${ts.operative.last_name}` : '—'}
                     </Link>
                     {ts.operative?.reference_number && (
-                      <div className="text-xs text-muted-foreground font-mono">{ts.operative.reference_number}</div>
+                      <span className="ml-1.5 text-[10px] text-muted-foreground font-mono">{ts.operative.reference_number}</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     w/c {new Date(ts.week_start).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </td>
-                  <td className="px-3 py-2.5 tabular-nums text-muted-foreground">
+                  <td className="px-3 py-1.5 tabular-nums text-muted-foreground">
                     {ts.day_rate_used ? `£${Number(ts.day_rate_used).toFixed(0)}` : '—'}
                   </td>
-                  <td className="px-3 py-2.5 tabular-nums">{ts.total_days ?? 0}</td>
-                  <td className="px-3 py-2.5 tabular-nums">{ts.total_hours != null ? Number(ts.total_hours).toFixed(1) : '0.0'}</td>
-                  <td className="px-3 py-2.5 tabular-nums font-medium">
+                  <td className="px-3 py-1.5 tabular-nums">{ts.total_days ?? 0}</td>
+                  <td className="px-3 py-1.5 tabular-nums">{ts.total_hours != null ? Number(ts.total_hours).toFixed(1) : '0.0'}</td>
+                  <td className="px-3 py-1.5 tabular-nums font-medium">
                     {ts.gross_pay != null ? `£${Number(ts.gross_pay).toFixed(2)}` : '—'}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <StatusBadge status={ts.status ?? 'draft'} />
                   </td>
                 </tr>

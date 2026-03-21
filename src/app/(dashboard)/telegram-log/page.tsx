@@ -82,7 +82,7 @@ export default async function TelegramLogPage() {
       />
 
       <div className="rounded-lg border bg-card overflow-hidden">
-        <div className="border-b bg-muted/40 px-4 py-3 grid grid-cols-[1fr_2fr_auto_auto] gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wide">
+        <div className="border-b bg-muted/40 px-3 py-1.5 grid grid-cols-[1fr_2fr_auto_auto] gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wide">
           <span>Staff Member</span>
           <span>Last Message</span>
           <span>Messages</span>
@@ -97,7 +97,7 @@ export default async function TelegramLogPage() {
           return (
             <div
               key={u.id}
-              className="grid grid-cols-[1fr_2fr_auto_auto] gap-4 px-4 py-3 border-b last:border-0 items-center hover:bg-muted/20 transition-colors"
+              className="grid grid-cols-[1fr_2fr_auto_auto] gap-4 px-3 py-1.5 border-b last:border-0 items-center hover:bg-muted/20 transition-colors"
             >
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4 text-muted-foreground shrink-0" />

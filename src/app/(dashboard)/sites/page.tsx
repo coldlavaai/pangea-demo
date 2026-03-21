@@ -115,12 +115,12 @@ export default async function SitesPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Site</th>
-                <th className="text-left px-3 py-2.5 font-medium">Location</th>
-                <th className="text-left px-3 py-2.5 font-medium">Manager</th>
-                <th className="text-left px-3 py-2.5 font-medium">Project Value</th>
-                <th className="text-left px-3 py-2.5 font-medium">Dates</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 font-medium">Location</th>
+                <th className="text-left px-3 py-1.5 font-medium">Manager</th>
+                <th className="text-left px-3 py-1.5 font-medium">Project Value</th>
+                <th className="text-left px-3 py-1.5 font-medium">Dates</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -129,7 +129,7 @@ export default async function SitesPage({
                   key={site.id}
                   className="border-b last:border-0 hover:bg-muted/30 transition-colors"
                 >
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <Link
                       href={`/sites/${site.id}`}
                       className="font-medium hover:underline"
@@ -137,39 +137,35 @@ export default async function SitesPage({
                       {site.name}
                     </Link>
                   </td>
-                  <td className="px-3 py-2.5 text-muted-foreground">
-                    <div>{site.address}</div>
-                    <div className="text-xs font-mono">{site.postcode}</div>
+                  <td className="px-3 py-1.5 text-muted-foreground">
+                    {site.address}{site.postcode && <span className="ml-1.5 text-xs font-mono">{site.postcode}</span>}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     {site.site_manager_name ? (
-                      <div>
-                        <div>{site.site_manager_name}</div>
+                      <>
+                        {site.site_manager_name}
                         {site.site_manager_phone && (
-                          <div className="text-xs text-muted-foreground">{site.site_manager_phone}</div>
+                          <span className="ml-1.5 text-xs text-muted-foreground">{site.site_manager_phone}</span>
                         )}
-                      </div>
+                      </>
                     ) : (
                       <span className="text-muted-foreground">—</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5 tabular-nums">
+                  <td className="px-3 py-1.5 tabular-nums">
                     {site.project_value != null ? (
                       <span>£{Number(site.project_value).toLocaleString()}</span>
                     ) : (
                       <span className="text-muted-foreground">—</span>
                     )}
                   </td>
-                  <td className="px-3 py-2.5 text-xs text-muted-foreground">
-                    {site.project_start_date && (
-                      <div>{new Date(site.project_start_date).toLocaleDateString('en-GB')}</div>
-                    )}
-                    {site.project_end_date && (
-                      <div>→ {new Date(site.project_end_date).toLocaleDateString('en-GB')}</div>
-                    )}
+                  <td className="px-3 py-1.5 text-xs text-muted-foreground">
+                    {site.project_start_date && new Date(site.project_start_date).toLocaleDateString('en-GB')}
+                    {site.project_start_date && site.project_end_date && ' → '}
+                    {site.project_end_date && new Date(site.project_end_date).toLocaleDateString('en-GB')}
                     {!site.project_start_date && !site.project_end_date && '—'}
                   </td>
-                  <td className="px-3 py-2.5">
+                  <td className="px-3 py-1.5">
                     <span
                       className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                         site.is_active

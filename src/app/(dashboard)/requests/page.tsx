@@ -159,15 +159,15 @@ export default async function RequestsPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2.5 font-medium">Site</th>
-                <th className="text-left px-3 py-2.5 font-medium">Trade</th>
-                <th className="text-left px-3 py-2.5 font-medium">Headcount</th>
-                <th className="text-left px-3 py-2.5 font-medium">Start</th>
-                <th className="text-left px-3 py-2.5 font-medium">End</th>
-                <th className="text-left px-3 py-2.5 font-medium">Day Rate</th>
-                <th className="text-left px-3 py-2.5 font-medium">Value</th>
-                <th className="text-left px-3 py-2.5 font-medium">Status</th>
-                <th className="text-left px-3 py-2.5 font-medium">Created</th>
+                <th className="text-left px-3 py-1.5 font-medium">Site</th>
+                <th className="text-left px-3 py-1.5 font-medium">Trade</th>
+                <th className="text-left px-3 py-1.5 font-medium">Headcount</th>
+                <th className="text-left px-3 py-1.5 font-medium">Start</th>
+                <th className="text-left px-3 py-1.5 font-medium">End</th>
+                <th className="text-left px-3 py-1.5 font-medium">Day Rate</th>
+                <th className="text-left px-3 py-1.5 font-medium">Value</th>
+                <th className="text-left px-3 py-1.5 font-medium">Status</th>
+                <th className="text-left px-3 py-1.5 font-medium">Created</th>
               </tr>
             </thead>
             <tbody>
@@ -179,32 +179,32 @@ export default async function RequestsPage({
                   : null
                 return (
                   <tr key={req.id} className="border-b last:border-0 hover:bg-muted/30 transition-colors">
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-1.5">
                       <Link href={`/requests/${req.id}`} className="font-medium hover:underline">
                         {site?.name ?? '—'}
                       </Link>
                     </td>
-                    <td className="px-3 py-2.5 text-muted-foreground">{trade?.name ?? 'Any'}</td>
-                    <td className="px-3 py-2.5 tabular-nums">
+                    <td className="px-3 py-1.5 text-muted-foreground">{trade?.name ?? 'Any'}</td>
+                    <td className="px-3 py-1.5 tabular-nums">
                       <span className="font-medium">{req.headcount_filled}</span>
                       <span className="text-muted-foreground">/{req.headcount_required}</span>
                     </td>
-                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                    <td className="px-3 py-1.5 text-muted-foreground tabular-nums">
                       {new Date(req.start_date).toLocaleDateString('en-GB')}
                     </td>
-                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                    <td className="px-3 py-1.5 text-muted-foreground tabular-nums">
                       {req.end_date ? new Date(req.end_date).toLocaleDateString('en-GB') : '—'}
                     </td>
-                    <td className="px-3 py-2.5 tabular-nums">
+                    <td className="px-3 py-1.5 tabular-nums">
                       {req.day_rate != null ? `£${Number(req.day_rate).toFixed(2)}` : '—'}
                     </td>
-                    <td className="px-3 py-2.5 tabular-nums font-medium">
+                    <td className="px-3 py-1.5 tabular-nums font-medium">
                       {totalValue != null ? `£${totalValue.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : '—'}
                     </td>
-                    <td className="px-3 py-2.5">
+                    <td className="px-3 py-1.5">
                       <StatusBadge status={req.status ?? 'pending'} />
                     </td>
-                    <td className="px-3 py-2.5 text-muted-foreground tabular-nums">
+                    <td className="px-3 py-1.5 text-muted-foreground tabular-nums">
                       {req.created_at ? new Date(req.created_at).toLocaleDateString('en-GB') : '—'}
                     </td>
                   </tr>
@@ -214,7 +214,7 @@ export default async function RequestsPage({
           </table>
 
           {totalPages > 1 && (
-            <div className="flex items-center justify-between px-4 py-3 border-t bg-muted/20">
+            <div className="flex items-center justify-between px-3 py-1.5 border-t bg-muted/20">
               <span className="text-[10px] text-muted-foreground">
                 Showing {offset + 1}–{Math.min(offset + PAGE_SIZE, filteredCount ?? 0)} of {filteredCount}
               </span>
