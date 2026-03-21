@@ -29,7 +29,7 @@ export default async function NewNcrPage({
   ])
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader title="Raise NCR" description="Record a non-conformance incident" />
         <Link href="/ncrs" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

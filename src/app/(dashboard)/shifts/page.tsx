@@ -1,8 +1,7 @@
 import { createServiceClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Calendar, Clock, Zap, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { StatsCard } from '@/components/stats-card'
 import { PageHeader } from '@/components/page-header'
 import { StatusBadge } from '@/components/status-badge'
 import { EmptyState } from '@/components/empty-state'
@@ -77,14 +76,30 @@ export default async function ShiftsPage({
   ]
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader title="Shifts" description="Operative shift schedule" />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatsCard title="Total" value={totalCount ?? 0} />
-        <StatsCard title="Scheduled" value={scheduledCount ?? 0} />
-        <StatsCard title="In Progress" value={inProgressCount ?? 0} />
-        <StatsCard title="Completed" value={completedCount ?? 0} />
+      <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Calendar className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{totalCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{scheduledCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Scheduled</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Zap className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{inProgressCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">In Progress</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{completedCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Completed</span>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -92,7 +107,7 @@ export default async function ShiftsPage({
           <Link
             key={value || 'all'}
             href={value ? `/shifts?status=${value}` : '/shifts'}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+            className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
               (params.status ?? '') === value
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'border-input bg-background hover:bg-muted'

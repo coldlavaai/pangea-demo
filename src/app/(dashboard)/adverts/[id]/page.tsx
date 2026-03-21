@@ -41,7 +41,7 @@ export default async function AdvertDetailPage({
     : null
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           title={PLATFORM_LABELS[ad.platform] ?? ad.platform}

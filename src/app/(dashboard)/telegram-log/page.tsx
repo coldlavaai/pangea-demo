@@ -35,7 +35,7 @@ export default async function TelegramLogPage() {
 
   if (typedStaff.length === 0) {
     return (
-      <div className="p-4 space-y-4">
+      <div className="px-4 pt-2 pb-4 space-y-2">
         <PageHeader
           title="Telegram Conversations"
           description="All staff Telegram bot interactions"
@@ -75,7 +75,7 @@ export default async function TelegramLogPage() {
   }
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Telegram Conversations"
         description="All staff Telegram bot interactions — full audit trail"

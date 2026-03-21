@@ -84,7 +84,7 @@ export default async function NcrDetailPage({
   const incidentTime = (ncr as any).incident_time as string | null
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           title={`NCR — ${NCR_TYPE_LABELS[ncr.incident_type] ?? ncr.incident_type}`}

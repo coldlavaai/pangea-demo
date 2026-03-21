@@ -54,7 +54,7 @@ export default async function TimesheetDetailPage({
   }))
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <PageHeader

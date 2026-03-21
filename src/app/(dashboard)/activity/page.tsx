@@ -48,7 +48,7 @@ export default async function ActivityPage() {
     .slice(0, 250)
 
   return (
-    <div className="p-4 space-y-4 max-w-3xl">
+    <div className="px-4 pt-2 pb-4 space-y-2 max-w-3xl">
       <PageHeader
         title="Activity"
         description="All platform events — site activity, applications, offers, and outgoing emails"

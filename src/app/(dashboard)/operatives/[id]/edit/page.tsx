@@ -31,7 +31,7 @@ export default async function EditOperativePage({
   if (!operative) notFound()
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title={`Edit — ${operative.first_name} ${operative.last_name}`}
         description={operative.reference_number ?? undefined}

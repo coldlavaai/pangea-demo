@@ -18,7 +18,7 @@ export default async function NewOperativePage() {
     .order('name')
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Add Operative"
         description="Create a new operative record"

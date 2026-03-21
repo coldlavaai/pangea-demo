@@ -19,7 +19,7 @@ export default async function NewRequestPage({
   ])
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader title="New Labour Request" description="Request operatives for a site" />
         <Link href="/requests" className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

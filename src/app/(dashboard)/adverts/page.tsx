@@ -49,7 +49,7 @@ export default async function AdvertsPage() {
   }
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Adverts"
         description="Job adverts across all platforms"
@@ -64,21 +64,27 @@ export default async function AdvertsPage() {
       />
 
       {/* Stats row */}
-      <div className="grid grid-cols-4 gap-3">
-        {[
-          { label: 'Active', value: stats.active, icon: Megaphone, colour: 'text-forest-400' },
-          { label: 'Impressions', value: stats.impressions.toLocaleString(), icon: Eye, colour: 'text-muted-foreground' },
-          { label: 'Clicks', value: stats.clicks.toLocaleString(), icon: MousePointer, colour: 'text-muted-foreground' },
-          { label: 'Applications', value: stats.applications.toLocaleString(), icon: Users, colour: 'text-muted-foreground' },
-        ].map(({ label, value, icon: Icon, colour }) => (
-          <div key={label} className="rounded-lg border border-border bg-background/60 p-4">
-            <div className="flex items-center gap-2 mb-1">
-              <Icon className={`h-4 w-4 ${colour}`} />
-              <span className="text-xs text-muted-foreground uppercase tracking-wide">{label}</span>
-            </div>
-            <p className={`text-2xl font-semibold tabular-nums ${colour}`}>{value}</p>
-          </div>
-        ))}
+      <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Megaphone className="h-3.5 w-3.5 text-forest-400 shrink-0" />
+          <span className="text-lg font-bold text-forest-400 tabular-nums">{stats.active}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Active</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Eye className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{stats.impressions.toLocaleString()}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Impressions</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <MousePointer className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{stats.clicks.toLocaleString()}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Clicks</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Users className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{stats.applications.toLocaleString()}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Applications</span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">

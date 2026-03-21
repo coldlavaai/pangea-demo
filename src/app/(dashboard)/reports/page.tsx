@@ -259,7 +259,7 @@ export default async function ReportsPage() {
   }, {})
 
   return (
-    <div className="p-4 space-y-8">
+    <div className="px-4 pt-2 pb-4 space-y-4">
       <PageHeader
         title="Reports"
         description="Compliance, workforce and audit reports for ISO review"

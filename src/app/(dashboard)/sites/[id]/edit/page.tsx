@@ -18,7 +18,7 @@ export default async function EditSitePage({ params }: { params: Promise<{ id: s
   if (!site) notFound()
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader title={`Edit — ${site.name}`} description="Update site details and managers" />
         <Link href={`/sites/${id}`} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">

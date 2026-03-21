@@ -64,7 +64,7 @@ export default async function DocumentDetailPage({
   const isExpired = doc.expiry_date && doc.expiry_date < today
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           title={DOC_TYPE_LABELS[doc.document_type] ?? doc.document_type}

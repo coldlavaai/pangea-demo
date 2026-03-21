@@ -164,7 +164,7 @@ export default async function LabourPoolSearchPage({
   const hasReallocationCandidates = candidates.some((c) => c.already_allocated)
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           title="Labour Pool Search"

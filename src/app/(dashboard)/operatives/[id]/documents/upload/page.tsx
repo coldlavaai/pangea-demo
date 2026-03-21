@@ -22,7 +22,7 @@ export default async function UploadDocumentPage({ params }: { params: Promise<{
   const name = `${operative.first_name} ${operative.last_name}`
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           title="Upload Document"

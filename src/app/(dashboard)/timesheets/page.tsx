@@ -1,8 +1,8 @@
 import { createServiceClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { Clock, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Clock, ChevronLeft, ChevronRight, FileText, Edit, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { StatsCard } from '@/components/stats-card'
+
 import { PageHeader } from '@/components/page-header'
 import { StatusBadge } from '@/components/status-badge'
 import { EmptyState } from '@/components/empty-state'
@@ -93,14 +93,30 @@ export default async function TimesheetsPage({
   ]
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader title="Timesheets" description="Weekly operative timesheets" />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatsCard title="Total" value={totalCount ?? 0} />
-        <StatsCard title="Draft" value={draftCount ?? 0} />
-        <StatsCard title="Pending Approval" value={pendingCount ?? 0} />
-        <StatsCard title="Approved" value={approvedCount ?? 0} />
+      <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <FileText className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{totalCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Edit className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{draftCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Draft</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{pendingCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Pending Approval</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{approvedCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Approved</span>
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -108,7 +124,7 @@ export default async function TimesheetsPage({
           <Link
             key={value || 'all'}
             href={value ? `/timesheets?status=${value}${params.operative ? `&operative=${encodeURIComponent(params.operative)}` : ''}` : `/timesheets${params.operative ? `?operative=${encodeURIComponent(params.operative)}` : ''}`}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+            className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
               (params.status ?? '') === value
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'border-input bg-background hover:bg-muted'

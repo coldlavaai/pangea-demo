@@ -1,8 +1,7 @@
 import { createServiceClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { Plus, ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Plus, ClipboardList, ChevronLeft, ChevronRight, Clock, Search, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { StatsCard } from '@/components/stats-card'
 import { PageHeader } from '@/components/page-header'
 import { StatusBadge } from '@/components/status-badge'
 import { EmptyState } from '@/components/empty-state'
@@ -70,7 +69,7 @@ export default async function RequestsPage({
   ]
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Labour Requests"
         description="Site requests for operatives"
@@ -85,11 +84,27 @@ export default async function RequestsPage({
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatsCard title="Total" value={totalCount ?? 0} />
-        <StatsCard title="Pending" value={pendingCount ?? 0} />
-        <StatsCard title="Searching / Partial" value={searchingCount ?? 0} />
-        <StatsCard title="Fulfilled" value={fulfilledCount ?? 0} />
+      <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <ClipboardList className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{totalCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Clock className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{pendingCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Pending</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <Search className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{searchingCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Searching</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{fulfilledCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Fulfilled</span>
+        </div>
       </div>
 
       {/* Status filter */}
@@ -100,7 +115,7 @@ export default async function RequestsPage({
             <Link
               key={value || 'all'}
               href={value ? `/requests?status=${value}` : '/requests'}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+              className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-colors ${
                 active
                   ? 'bg-primary text-primary-foreground border-primary'
                   : 'border-input bg-background hover:bg-muted'

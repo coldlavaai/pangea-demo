@@ -32,7 +32,7 @@ export default async function CommsPage() {
   const threads = (raw ?? []).filter(t => !(t.operative_id && !t.operative))
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="WhatsApp"
         description="Conversation log — all inbound and outbound messages"

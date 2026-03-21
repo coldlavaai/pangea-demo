@@ -1,8 +1,7 @@
 import { createServiceClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { Plus, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Plus, MapPin, CheckCircle2, XCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { StatsCard } from '@/components/stats-card'
 import { PageHeader } from '@/components/page-header'
 import { EmptyState } from '@/components/empty-state'
 import { SitesFilterBar } from '@/components/sites/sites-filter-bar'
@@ -58,7 +57,7 @@ export default async function SitesPage({
   const hasFilters = params.q || params.status
 
   return (
-    <div className="p-4 space-y-3">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Sites"
         description="Construction sites and project locations"
@@ -73,10 +72,22 @@ export default async function SitesPage({
       />
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatsCard title="Total Sites" value={totalCount ?? 0} />
-        <StatsCard title="Active" value={activeCount ?? 0} />
-        <StatsCard title="Inactive" value={inactiveCount ?? 0} />
+      <div className="flex items-center gap-px rounded-lg border border-border bg-background/40 overflow-hidden divide-x divide-border">
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <MapPin className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{totalCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Total Sites</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <CheckCircle2 className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{activeCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Active</span>
+        </div>
+        <div className="flex items-center gap-2.5 px-4 py-2 flex-1">
+          <XCircle className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+          <span className="text-lg font-bold text-foreground tabular-nums">{inactiveCount ?? 0}</span>
+          <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Inactive</span>
+        </div>
       </div>
 
       {/* Filters */}

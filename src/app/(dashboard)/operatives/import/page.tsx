@@ -11,7 +11,7 @@ export default async function ImportOperativesPage() {
   if (!allowed) redirect('/operatives')
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="px-4 pt-2 pb-4 space-y-2">
       <PageHeader
         title="Import Operatives"
         description="Bulk upload from CSV — up to 5,000 contacts per file"
